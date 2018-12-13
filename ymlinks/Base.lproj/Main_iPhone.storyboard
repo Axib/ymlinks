@@ -82,7 +82,7 @@ HOemvue7tOenkeaKgA
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Nok-9x-xBm"/>
                                                 </connections>
@@ -97,6 +97,9 @@ HOemvue7tOenkeaKgA
                                         <state key="normal" title="登录">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendLoginRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LVx-cC-ZNz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
@@ -110,6 +113,7 @@ HOemvue7tOenkeaKgA
                         <outlet property="bg_view" destination="Ig4-aW-SKf" id="3IT-Du-kyF"/>
                         <outlet property="log_image" destination="ISQ-KQ-6uO" id="gIO-l9-B0d"/>
                         <outlet property="login_btn" destination="1qW-xI-S2u" id="oie-2X-E5F"/>
+                        <outlet property="login_view" destination="o9k-Cx-0sb" id="Kjv-5R-pbf"/>
                         <outlet property="password" destination="1cq-6f-1f2" id="kNg-UP-vQJ"/>
                         <outlet property="userName" destination="YrO-EW-Y0M" id="Tba-72-0jA"/>
                     </connections>

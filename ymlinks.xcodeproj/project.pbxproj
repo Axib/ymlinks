@@ -20,6 +20,9 @@
 		01F25C5521C16157002FAFE7 /* logo_200.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F25C5421C16156002FAFE7 /* logo_200.png */; };
 		01F67CEB21C2830C008255BE /* icon_password_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F67CE921C2830C008255BE /* icon_password_01.png */; };
 		01F67CEC21C2830C008255BE /* icon_username_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F67CEA21C2830C008255BE /* icon_username_01.png */; };
+		01F67CF021C2B1A8008255BE /* NetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F67CEF21C2B1A8008255BE /* NetworkInterface.m */; };
+		01F67CF821C2B61D008255BE /* ShopMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F67CF721C2B61D008255BE /* ShopMD.m */; };
+		01F67CFB21C2B858008255BE /* MJPhotoBrowser in Resources */ = {isa = PBXBuildFile; fileRef = 01F67CFA21C2B858008255BE /* MJPhotoBrowser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,13 @@
 		01F25C5421C16156002FAFE7 /* logo_200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_200.png; sourceTree = "<group>"; };
 		01F67CE921C2830C008255BE /* icon_password_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_password_01.png; sourceTree = "<group>"; };
 		01F67CEA21C2830C008255BE /* icon_username_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_username_01.png; sourceTree = "<group>"; };
+		01F67CEE21C2B1A8008255BE /* NetworkInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkInterface.h; sourceTree = "<group>"; };
+		01F67CEF21C2B1A8008255BE /* NetworkInterface.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkInterface.m; sourceTree = "<group>"; };
+		01F67CF321C2B3AD008255BE /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		01F67CF421C2B58F008255BE /* GlobalVariable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalVariable.h; sourceTree = "<group>"; };
+		01F67CF621C2B61D008255BE /* ShopMD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopMD.h; sourceTree = "<group>"; };
+		01F67CF721C2B61D008255BE /* ShopMD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopMD.m; sourceTree = "<group>"; };
+		01F67CFA21C2B858008255BE /* MJPhotoBrowser */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MJPhotoBrowser; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,10 @@
 		0196E12A21C00ADB004CB83C /* ymlinks */ = {
 			isa = PBXGroup;
 			children = (
+				01F67CF921C2B83F008255BE /* Libs */,
+				01F67CF521C2B603008255BE /* Model */,
+				01F67CF121C2B22D008255BE /* Utility */,
+				01F67CED21C2B160008255BE /* NetworkManage */,
 				0196E16921C01036004CB83C /* images */,
 				0196E12B21C00ADB004CB83C /* AppDelegate.h */,
 				0196E12C21C00ADB004CB83C /* AppDelegate.m */,
@@ -153,6 +167,41 @@
 				0196E16A21C0107F004CB83C /* img_login_element.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		01F67CED21C2B160008255BE /* NetworkManage */ = {
+			isa = PBXGroup;
+			children = (
+				01F67CEE21C2B1A8008255BE /* NetworkInterface.h */,
+				01F67CEF21C2B1A8008255BE /* NetworkInterface.m */,
+			);
+			path = NetworkManage;
+			sourceTree = "<group>";
+		};
+		01F67CF121C2B22D008255BE /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				01F67CF321C2B3AD008255BE /* PrefixHeader.pch */,
+				01F67CF421C2B58F008255BE /* GlobalVariable.h */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		01F67CF521C2B603008255BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01F67CF621C2B61D008255BE /* ShopMD.h */,
+				01F67CF721C2B61D008255BE /* ShopMD.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01F67CF921C2B83F008255BE /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				01F67CFA21C2B858008255BE /* MJPhotoBrowser */,
+			);
+			path = Libs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +313,7 @@
 				01F67CEB21C2830C008255BE /* icon_password_01.png in Resources */,
 				0196E16B21C0107F004CB83C /* img_login_element.png in Resources */,
 				0196E13821C00ADB004CB83C /* LaunchScreen.storyboard in Resources */,
+				01F67CFB21C2B858008255BE /* MJPhotoBrowser in Resources */,
 				0196E16821C00DFA004CB83C /* Main_iPad.storyboard in Resources */,
 				0196E13521C00ADB004CB83C /* Assets.xcassets in Resources */,
 				0196E16721C00DFA004CB83C /* Main_iPhone.storyboard in Resources */,
@@ -293,7 +343,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F67CF021C2B1A8008255BE /* NetworkInterface.m in Sources */,
 				0196E13021C00ADB004CB83C /* ViewController.m in Sources */,
+				01F67CF821C2B61D008255BE /* ShopMD.m in Sources */,
 				0196E13B21C00ADB004CB83C /* main.m in Sources */,
 				0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */,
 			);
@@ -468,9 +520,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X954KXZ2ZD;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Utility/PrefixHeader.pch";
 				INFOPLIST_FILE = ymlinks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.ymlinks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -483,9 +539,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X954KXZ2ZD;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Utility/PrefixHeader.pch";
 				INFOPLIST_FILE = ymlinks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.ymlinks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

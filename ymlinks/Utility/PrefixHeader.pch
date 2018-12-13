@@ -1,0 +1,110 @@
+//
+//  PrefixHeader.pch
+//  ymlinks
+//
+//  Created by nick on 2018/12/13.
+//  Copyright © 2018年 ym. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "ShopMD.h"
+//
+//#import "Masonry.h"
+//#import "MBProgressHUD.h"
+//
+#import "GlobalVariable.h"
+//#import "NotificationName.h"
+//#import "UserDefaultsKey.h"
+//
+//#import "NSString+Expand.h"
+//#import "NSDate+Expand.h"
+//#import "NSArray+Expand.h"
+////
+//#import "UIImage+Expand.h"
+//#import "UIView+Expand.h"
+//#import "UILabel+Expand.h"
+//#import "UIButton+Expand.h"
+//#import "UIImageView+Expand.h"
+//#import "UITextField+Expand.h"
+
+//#import "BasicCell.h"
+//
+//#import "Tool_App.h"
+
+#endif
+
+#pragma mark - 常用宏
+
+/**
+ *  APP编号
+ */
+#define APPID @""
+
+/**
+ *  产品Name
+ */
+#define BKProductName @""
+
+/**
+ *  客服电话
+ */
+#define TEL_SERVICE @"021-60493975"
+
+/**
+ *  打印
+ */
+#ifdef DEBUG
+#define ZNLog(...) NSLog(__VA_ARGS__)
+#else
+#define ZNLog(...)
+#endif
+
+/**
+ *  RGB颜色
+ */
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#define M_COLORWITHIMG(image) ([UIColor colorWithPatternImage:image])
+
+/**
+ *  字体
+ */
+#define M_FONT_SYSTEM(font) ([UIFont systemFontOfSize:font])
+#define M_FONT_BOLD(font)   ([UIFont boldSystemFontOfSize:font])
+
+/**
+ *  UserDefaults
+ */
+#define M_USERDEFAULTS                 ([NSUserDefaults standardUserDefaults])
+#define M_USERDEFAULTS_GET(key)        ([[NSUserDefaults standardUserDefaults] objectForKey:key])
+#define M_USERDEFAULTS_SET(value, key) [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];\
+[M_USERDEFAULTS synchronize];
+
+/**
+ *  IndexPath
+ */
+#define M_IndexPath(section, row) ([NSIndexPath indexPathForRow:row inSection:section])
+
+/**
+ *  WEAKSELF
+ */
+#define WEAKSELF __weak typeof(self) weakSelf = self;
+
+/**
+ *  是否>=IOS8系统
+ */
+#define ISIOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 ? YES : NO)
+
+
+#endif /* PrefixHeader_pch */

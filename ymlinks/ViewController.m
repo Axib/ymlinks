@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIView *bg_view;
 @property (weak, nonatomic) IBOutlet UIImageView *bg_image;
 @property (weak, nonatomic) IBOutlet UIImageView *log_image;
+@property (weak, nonatomic) IBOutlet UIView *login_view;
 @property (weak, nonatomic) IBOutlet UIButton *login_btn;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -40,6 +41,7 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+#pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField.tag == 1) {
         [_password becomeFirstResponder];
@@ -51,10 +53,44 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField.tag == 1) {
-        
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = _login_view.frame;
+        if (textField.tag == 1) {
+            [_login_view setFrame:CGRectMake(rect.origin.x, 120, rect.size.width, rect.size.height)];
+        }
+        else {
+            [_login_view setFrame:CGRectMake(rect.origin.x, 100, rect.size.width, rect.size.height)];
+        }
+    }];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect rect = _login_view.frame;
+        [_login_view setFrame:CGRectMake(rect.origin.x, 184, rect.size.width, rect.size.height)];
+    }];
+}
+#pragma mark - 封装弹出对话框方法
+// 提示错误信息
+- (void)showError:(NSString *)errorMsg {
+    // 1.弹框提醒
+    // 初始化对话框
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:errorMsg preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+    // 弹出对话框
+    [self presentViewController:alert animated:true completion:nil];
+}
+
+
+- (IBAction)sendLoginRequest:(id)sender {
+    if (_userName.text.length <= 0 || _password.text.length <= 0) {
+        [self showError:@"请检查用户名和密码是否为空！"];
+        return;
     }
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
