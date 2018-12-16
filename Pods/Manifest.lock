@@ -1,0 +1,83 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - HappyDNS (0.3.14)
+  - Masonry (1.0.2)
+  - MBProgressHUD (0.9.2)
+  - MJExtension (3.0.15.1)
+  - MJRefresh (3.1.15.7)
+  - pop (1.0.12)
+  - Qiniu (7.0.20):
+    - AFNetworking (~> 3)
+    - HappyDNS (~> 0.3)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - SHLineGraphView (1.0.6)
+  - SSKeychain (1.4.1)
+
+DEPENDENCIES:
+  - Masonry (~> 1.0.0)
+  - MBProgressHUD (~> 0.9.2)
+  - MJExtension (~> 3.0.10)
+  - MJRefresh (~> 3.1.0)
+  - pop
+  - pop (~> 1.0.9)
+  - Qiniu (from `https://github.com/qiniu/objc-sdk.git`, branch `AFNetworking-3.x`)
+  - SDWebImage (~> 3.7.5)
+  - SDWebImage (~> 3.7.6)
+  - SHLineGraphView (~> 1.0.6)
+  - SSKeychain (~> 1.4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - HappyDNS
+    - Masonry
+    - MBProgressHUD
+    - MJExtension
+    - MJRefresh
+    - pop
+    - SDWebImage
+    - SHLineGraphView
+    - SSKeychain
+
+EXTERNAL SOURCES:
+  Qiniu:
+    :branch: AFNetworking-3.x
+    :git: https://github.com/qiniu/objc-sdk.git
+
+CHECKOUT OPTIONS:
+  Qiniu:
+    :commit: 425fb4d50f39149685ee33914ac948156616408e
+    :git: https://github.com/qiniu/objc-sdk.git
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  Qiniu: 4dbf1e6acb3236c4d7251046a17d08b16d21fcfe
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SHLineGraphView: eb2be643fe2b9778e10e702836a1b474083ab9da
+  SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
+
+PODFILE CHECKSUM: cbfa09d08e8127a0fde1141fc0432de862aab56a
+
+COCOAPODS: 1.5.3
