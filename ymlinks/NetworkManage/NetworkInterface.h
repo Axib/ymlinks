@@ -21,12 +21,10 @@ typedef enum : NSUInteger {//网络接口
     NetworkTag,
     
     /**************************************** 登录 ****************************************/
-    /** 获取连锁List */
-    NetworkTag_GetChainList,
     /** 获取连锁下ShopList */
     NetworkTag_GetShopList,
     /** 用户登录 */
-    NetworkTag_PostUserLogin,
+    NetworkTag_UserLogin,
     
     /**************************************** 门店 ****************************************/
     /** 获取门店shopId (主键Id) */

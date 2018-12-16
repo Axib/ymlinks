@@ -88,7 +88,26 @@
         [self showError:@"请检查用户名和密码是否为空！"];
         return;
     }
+    
+    NSDictionary *parameDic = @{@"username": self.userName.text,
+                                @"password": self.password.text,
+                                @"type": @"1",
+                                @"userAgent": @"",
+                                @"clientIp": @"127.0.0.1"};
+    
+    [[NetworkManage shareNetworkManage] postJsonRequest:parameDic Tag:NetworkTag_PostUserLogin Delegate:self];
 }
+
+/** 网络请求成功 */
+- (void)net_requestSuccess:(id)result Tag:(NetworkInterfaceTag)tag {
+    [super net_requestSuccess:result Tag:tag];
+    
+    if (tag == NetworkTag_PostUserLogin) {//返回 登录Token 保存
+        m_networkToken = result;
+        [self saveLoginInfo];
+        [self gotoHomeVic];
+    }
+
 
 
 

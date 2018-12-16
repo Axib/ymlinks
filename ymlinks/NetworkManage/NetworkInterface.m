@@ -15,19 +15,11 @@
     
     switch (tag) {
         case NetworkTag:
-            
             return @"";
             
-        case NetworkTag_GetChainList://获取连锁List
-            return [NSString stringWithFormat:@"%@/s3connect/shop/getCustLs", CurrentURL];
-            
-        case NetworkTag_GetShopList://获取门店List 拼接接口 /shop/chain/{连锁id}/shop/list/manager/get
-            return [NSString stringWithFormat:@"%@/shop/chain/", CurrentURL];
-            
-        case NetworkTag_PostUserLogin://用户登录
-            return [NSString stringWithFormat:@"%@/s3connect/user/%@/chain/%@/comp/%@/login",
+        case NetworkTag_UserLogin://用户登录
+            return [NSString stringWithFormat:@"%@/user/admin/login",
                     CurrentURL, m_BKProductName, m_currentShopInfo.m_custId, m_currentShopInfo.m_compId];
-            
             
         case NetworkTag_GetShopId://获取门店shopId 主键Id
             return [NSString stringWithFormat:@"%@/shop/chain/%@/comp/%@/getShopId",
@@ -91,7 +83,7 @@
         case NetworkTag_GetCanReservationTimeListByDate://根据日期查询可预约时间
             return [NSString stringWithFormat:@"%@/reserve/date/s/%@/d/-1?",
                     CurrentURL, m_currentShopInfo.m_shopId];
-            
+
         case NetworkTag_GetCanReservationServiceList://获取门店可预约服务list
             return [NSString stringWithFormat:@"%@/shop/get/%@",
                     CurrentURL, m_currentShopInfo.m_shopId];

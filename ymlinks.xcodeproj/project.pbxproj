@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011BE27521C4BC270044A70C /* NetworkManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 011BE27421C4BC270044A70C /* NetworkManage.m */; };
 		0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0196E12C21C00ADB004CB83C /* AppDelegate.m */; };
 		0196E13021C00ADB004CB83C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0196E12F21C00ADB004CB83C /* ViewController.m */; };
 		0196E13521C00ADB004CB83C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0196E13421C00ADB004CB83C /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		01F67CF021C2B1A8008255BE /* NetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F67CEF21C2B1A8008255BE /* NetworkInterface.m */; };
 		01F67CF821C2B61D008255BE /* ShopMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F67CF721C2B61D008255BE /* ShopMD.m */; };
 		01F67CFB21C2B858008255BE /* MJPhotoBrowser in Resources */ = {isa = PBXBuildFile; fileRef = 01F67CFA21C2B858008255BE /* MJPhotoBrowser */; };
+		3EA496ED622460D373357FCC /* libPods-ymlinks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E52EE5F36B236F3D784FA3A3 /* libPods-ymlinks.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		011BE27321C4BC270044A70C /* NetworkManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
+		011BE27421C4BC270044A70C /* NetworkManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManage.m; sourceTree = "<group>"; };
 		0196E12821C00ADB004CB83C /* ymlinks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ymlinks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0196E12B21C00ADB004CB83C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0196E12C21C00ADB004CB83C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +75,9 @@
 		01F67CF621C2B61D008255BE /* ShopMD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopMD.h; sourceTree = "<group>"; };
 		01F67CF721C2B61D008255BE /* ShopMD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopMD.m; sourceTree = "<group>"; };
 		01F67CFA21C2B858008255BE /* MJPhotoBrowser */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MJPhotoBrowser; sourceTree = "<group>"; };
+		35E633C9C262AE92179900A6 /* Pods-ymlinks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ymlinks.release.xcconfig"; path = "Pods/Target Support Files/Pods-ymlinks/Pods-ymlinks.release.xcconfig"; sourceTree = "<group>"; };
+		B4A2EE0FCD05D35757AD3613 /* Pods-ymlinks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ymlinks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ymlinks/Pods-ymlinks.debug.xcconfig"; sourceTree = "<group>"; };
+		E52EE5F36B236F3D784FA3A3 /* libPods-ymlinks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ymlinks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA496ED622460D373357FCC /* libPods-ymlinks.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,13 +106,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		011BE27621C4BE1F0044A70C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B4A2EE0FCD05D35757AD3613 /* Pods-ymlinks.debug.xcconfig */,
+				35E633C9C262AE92179900A6 /* Pods-ymlinks.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		0196E11F21C00ADB004CB83C = {
 			isa = PBXGroup;
 			children = (
+				011BE27621C4BE1F0044A70C /* Pods */,
 				0196E12A21C00ADB004CB83C /* ymlinks */,
 				0196E14321C00ADB004CB83C /* ymlinksTests */,
 				0196E14E21C00ADB004CB83C /* ymlinksUITests */,
 				0196E12921C00ADB004CB83C /* Products */,
+				5A40681D27B72BC5C6084CA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +193,8 @@
 			children = (
 				01F67CEE21C2B1A8008255BE /* NetworkInterface.h */,
 				01F67CEF21C2B1A8008255BE /* NetworkInterface.m */,
+				011BE27321C4BC270044A70C /* NetworkManage.h */,
+				011BE27421C4BC270044A70C /* NetworkManage.m */,
 			);
 			path = NetworkManage;
 			sourceTree = "<group>";
@@ -204,6 +225,14 @@
 			path = Libs;
 			sourceTree = "<group>";
 		};
+		5A40681D27B72BC5C6084CA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E52EE5F36B236F3D784FA3A3 /* libPods-ymlinks.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,9 +240,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0196E15421C00ADB004CB83C /* Build configuration list for PBXNativeTarget "ymlinks" */;
 			buildPhases = (
+				C7F83629E719926734B2D58E /* [CP] Check Pods Manifest.lock */,
 				0196E12421C00ADB004CB83C /* Sources */,
 				0196E12521C00ADB004CB83C /* Frameworks */,
 				0196E12621C00ADB004CB83C /* Resources */,
+				B47AE643F85C0DBB46860B01 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -338,6 +369,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B47AE643F85C0DBB46860B01 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ymlinks/Pods-ymlinks-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SSKeychain.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ymlinks/Pods-ymlinks-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7F83629E719926734B2D58E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ymlinks-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0196E12421C00ADB004CB83C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -346,6 +422,7 @@
 				01F67CF021C2B1A8008255BE /* NetworkInterface.m in Sources */,
 				0196E13021C00ADB004CB83C /* ViewController.m in Sources */,
 				01F67CF821C2B61D008255BE /* ShopMD.m in Sources */,
+				011BE27521C4BC270044A70C /* NetworkManage.m in Sources */,
 				0196E13B21C00ADB004CB83C /* main.m in Sources */,
 				0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */,
 			);
@@ -516,39 +593,45 @@
 		};
 		0196E15521C00ADB004CB83C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4A2EE0FCD05D35757AD3613 /* Pods-ymlinks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X954KXZ2ZD;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Utility/PrefixHeader.pch";
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;
 				INFOPLIST_FILE = ymlinks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.ymlinks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		0196E15621C00ADB004CB83C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35E633C9C262AE92179900A6 /* Pods-ymlinks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X954KXZ2ZD;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Utility/PrefixHeader.pch";
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;
 				INFOPLIST_FILE = ymlinks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ym.ymlinks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
