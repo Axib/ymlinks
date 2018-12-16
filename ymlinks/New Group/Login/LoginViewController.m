@@ -1,14 +1,15 @@
 //
-//  ViewController.m
+//  LoginViewController.m
 //  ymlinks
 //
-//  Created by nick on 2018/12/11.
+//  Created by nick on 2018/12/16.
 //  Copyright © 2018年 ym. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
+#import "HomeViewController.h"
 
-@interface ViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bg_view;
 @property (weak, nonatomic) IBOutlet UIImageView *bg_image;
 @property (weak, nonatomic) IBOutlet UIImageView *log_image;
@@ -17,29 +18,32 @@
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 
-
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
+    NSLog(@"12311111");
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor redColor];
     
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.view.bounds;
     gradient.colors = [NSArray arrayWithObjects:
-                       (id)[UIColor colorWithRed:25/255 green:58/255.0 blue:109/255.0 alpha:1.0].CGColor,
-                       (id)[UIColor colorWithRed:93/255 green:120/255.0 blue:180/255.0 alpha:1.0].CGColor,
-                       (id)[UIColor colorWithRed:5/255 green:12/255.0 blue:49/255.0 alpha:1.0].CGColor, nil];
+                       (id)RGBCOLOR(25, 58, 109).CGColor,
+                       (id)RGBCOLOR(93, 120, 180).CGColor,
+                       (id)RGBCOLOR(5, 12, 49).CGColor, nil];
     [self.bg_view.layer addSublayer:gradient];
     
     self.log_image.layer.cornerRadius = self.log_image.frame.size.width/2.0;
     _login_btn.layer.cornerRadius = 5;
-    _login_btn.layer.shadowColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.6].CGColor;
+    _login_btn.layer.shadowColor = RGBACOLOR(255, 255, 255, 0.6).CGColor;
     _login_btn.layer.shadowOffset = CGSizeMake(10, 8);
-    // Do any additional setup after loading the view, typically from a nib.
+
+    
+    // Do any additional setup after loading the view.
 }
+
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -95,25 +99,39 @@
                                 @"userAgent": @"",
                                 @"clientIp": @"127.0.0.1"};
     
-    [[NetworkManage shareNetworkManage] postJsonRequest:parameDic Tag:NetworkTag_PostUserLogin Delegate:self];
+    [[NetworkManage shareNetworkManage] postJsonRequest:parameDic Tag:NetworkTag_UserLogin Delegate:self];
 }
 
 /** 网络请求成功 */
 - (void)net_requestSuccess:(id)result Tag:(NetworkInterfaceTag)tag {
-    [super net_requestSuccess:result Tag:tag];
-    
-    if (tag == NetworkTag_PostUserLogin) {//返回 登录Token 保存
-        m_networkToken = result;
-        [self saveLoginInfo];
-        [self gotoHomeVic];
+    //    [super net_requestSuccess:result Tag:tag];
+    if (tag == NetworkTag_UserLogin) {//返回 登录Token 保存
+        m_loginInfo = result;
+        //        [self saveLoginInfo];
+        [self gotoHomePage];
     }
+}
 
+/** 前往首页 */
+- (void)gotoHomePage {
+    [self performSegueWithIdentifier:@"GoHomePage" sender:nil];
 
+}
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

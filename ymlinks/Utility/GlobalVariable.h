@@ -35,7 +35,7 @@ NSString *m_deviceType;
 NSString *m_deviceVersion;
 
 /** 产品名称 */
-NSString *m_BKProductName;
+NSString *m_productName;
 
 /** 当前定位城市 */
 NSString *m_currentCity;
@@ -46,7 +46,7 @@ NSString *m_latitude;
 
 
 /** Token 登录Token 如果为空 则未登录 有值则为 登录成功 */
-NSString *m_networkToken;
+NSDictionary *m_loginInfo;
 
 
 #pragma mark - VIEWTAG

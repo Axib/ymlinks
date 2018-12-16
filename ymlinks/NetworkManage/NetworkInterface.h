@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 //正式环境
-#define FormalBasicURL @"https://api.bokao2o.com"
+#define FormalBasicURL @"https://api.ymlinks.com"
 //测试环境
-#define TestBasicURL   @"http://test.bokao2o.com"
+#define TestBasicURL   @"https://test.ymlinks.com"
 
 //#define CurrentURL FormalBasicURL
-#define CurrentURL TestBasicURL
+#define CurrentURL FormalBasicURL
 
 /** 命名 NetworkTag + Get/Post 请求 + 功能描述 */
 typedef enum : NSUInteger {//网络接口

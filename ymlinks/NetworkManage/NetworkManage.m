@@ -257,7 +257,7 @@ NetworkManage *m_networkManage;
     [manager.requestSerializer setValue:deviceUuId
                      forHTTPHeaderField:@"device_id"];
     
-    [manager.requestSerializer setValue:[NSString ex_stringWithId:m_networkToken]
+    [manager.requestSerializer setValue:[NSString ex_stringWithId:[m_loginInfo objectForKey:@"accessToken"]]
                      forHTTPHeaderField:@"access_token"];
     
     [manager.requestSerializer setValue:@"iOS"
@@ -265,6 +265,9 @@ NetworkManage *m_networkManage;
     
     [manager.requestSerializer setValue:[NSString ex_stringWithId:m_AppVersion]
                      forHTTPHeaderField:@"app_version"];
+    
+    [manager.requestSerializer setValue:[NSString ex_stringWithId:m_AppVersion]
+                     forHTTPHeaderField:@"product"];
 }
 
 #pragma mark - 网络请求结果
@@ -308,7 +311,7 @@ NetworkManage *m_networkManage;
     //请求成功 回调
     switch (tag) {//需特殊处理的 网络请求
             
-        case NetworkTag_PostUserLogin:
+        case NetworkTag_UserLogin:
             //用户登录
             [self userLoginSuccessCallback:delegate Result:resultsInfo[@"result"] Tag:tag];
             
@@ -367,9 +370,7 @@ NetworkManage *m_networkManage;
 #pragma mark - 用户登录
 - (void)userLoginSuccessCallback:(id<NetworkManageDelegate>)delegate Result:(id)result  Tag:(NetworkInterfaceTag)tag {
     
-    m_networkToken = result;
-    
-    [[NetworkManage shareNetworkManage] getRequest:nil Tag:NetworkTag_GetShopId Delegate:delegate];
+    m_loginInfo = result;
     
     if ([delegate respondsToSelector:@selector(net_requestSuccess:Tag:)])
         [delegate net_requestSuccess:result Tag:tag];

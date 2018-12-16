@@ -19,7 +19,7 @@
             
         case NetworkTag_UserLogin://用户登录
             return [NSString stringWithFormat:@"%@/user/admin/login",
-                    CurrentURL, m_BKProductName, m_currentShopInfo.m_custId, m_currentShopInfo.m_compId];
+                    CurrentURL, m_productName, m_currentShopInfo.m_custId, m_currentShopInfo.m_compId];
             
         case NetworkTag_GetShopId://获取门店shopId 主键Id
             return [NSString stringWithFormat:@"%@/shop/chain/%@/comp/%@/getShopId",
