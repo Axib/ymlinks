@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NetworkManage.h"
 
-@interface YMSuperViewController : UIViewController
+@interface YMSuperViewController : UIViewController<NetworkManageDelegate>
 
 /**
  *  NavBar

@@ -23,7 +23,6 @@
 @implementation LoginViewController
 
 - (void)viewDidLoad {
-    NSLog(@"12311111");
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor redColor];
     
@@ -88,18 +87,21 @@
 
 
 - (IBAction)sendLoginRequest:(id)sender {
-    if (_userName.text.length <= 0 || _password.text.length <= 0) {
-        [self showError:@"请检查用户名和密码是否为空！"];
-        return;
-    }
     
-    NSDictionary *parameDic = @{@"username": self.userName.text,
-                                @"password": self.password.text,
-                                @"type": @"1",
-                                @"userAgent": @"",
-                                @"clientIp": @"127.0.0.1"};
+    [self performSegueWithIdentifier:@"GoHomePage" sender:nil];
     
-    [[NetworkManage shareNetworkManage] postJsonRequest:parameDic Tag:NetworkTag_UserLogin Delegate:self];
+//    if (_userName.text.length <= 0 || _password.text.length <= 0) {
+//        [self showError:@"请检查用户名和密码是否为空！"];
+//        return;
+//    }
+//
+//    NSDictionary *parameDic = @{@"username": self.userName.text,
+//                                @"password": self.password.text,
+//                                @"type": @"1",
+//                                @"userAgent": @"",
+//                                @"clientIp": @"127.0.0.1"};
+//
+//    [[NetworkManage shareNetworkManage] postJsonRequest:parameDic Tag:NetworkTag_UserLogin Delegate:self];
 }
 
 /** 网络请求成功 */

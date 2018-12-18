@@ -8,7 +8,7 @@
 
 #import "YMSuperViewController.h"
 
-@interface YMSuperViewController ()<NetworkManageDelegate>
+@interface YMSuperViewController ()
 
 @end
 

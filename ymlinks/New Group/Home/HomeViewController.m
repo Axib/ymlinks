@@ -60,6 +60,7 @@
 
 /** 散客*/
 - (IBAction)nonMembers:(id)sender {
+    [self performSegueWithIdentifier:@"intoBilling" sender:nil];
 }
 
 /*

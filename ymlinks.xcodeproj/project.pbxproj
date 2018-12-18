@@ -39,6 +39,12 @@
 		01CE5D7821C68BD300B2BC90 /* icon_data_statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 01CE5D7321C68BD200B2BC90 /* icon_data_statistics.png */; };
 		01CE5D8121C6973000B2BC90 /* WaterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D8021C6973000B2BC90 /* WaterListViewController.m */; };
 		01CE5D8721C6A50A00B2BC90 /* icon_return_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */; };
+		01F172E021C9281C0065C987 /* SearchMberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172DF21C9281C0065C987 /* SearchMberViewController.m */; };
+		01F172E321C9362A0065C987 /* MberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172E221C9362A0065C987 /* MberDetailViewController.m */; };
+		01F172E721C939FC0065C987 /* JournalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172E621C939FC0065C987 /* JournalViewController.m */; };
+		01F172EB21C93AA10065C987 /* ReservationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172EA21C93AA10065C987 /* ReservationViewController.m */; };
+		01F172EF21C93DF10065C987 /* BillingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172EE21C93DF10065C987 /* BillingViewController.m */; };
+		01F172F321C93FD10065C987 /* TariffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172F221C93FD10065C987 /* TariffViewController.m */; };
 		01F25C5521C16157002FAFE7 /* logo_200.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F25C5421C16156002FAFE7 /* logo_200.png */; };
 		01F67CEB21C2830C008255BE /* icon_password_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F67CE921C2830C008255BE /* icon_password_01.png */; };
 		01F67CEC21C2830C008255BE /* icon_username_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 01F67CEA21C2830C008255BE /* icon_username_01.png */; };
@@ -123,6 +129,18 @@
 		01CE5D7F21C6973000B2BC90 /* WaterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterListViewController.h; sourceTree = "<group>"; };
 		01CE5D8021C6973000B2BC90 /* WaterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterListViewController.m; sourceTree = "<group>"; };
 		01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_return_back@3x.png"; sourceTree = "<group>"; };
+		01F172DE21C9281C0065C987 /* SearchMberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchMberViewController.h; sourceTree = "<group>"; };
+		01F172DF21C9281C0065C987 /* SearchMberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchMberViewController.m; sourceTree = "<group>"; };
+		01F172E121C9362A0065C987 /* MberDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MberDetailViewController.h; sourceTree = "<group>"; };
+		01F172E221C9362A0065C987 /* MberDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MberDetailViewController.m; sourceTree = "<group>"; };
+		01F172E521C939FC0065C987 /* JournalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JournalViewController.h; sourceTree = "<group>"; };
+		01F172E621C939FC0065C987 /* JournalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JournalViewController.m; sourceTree = "<group>"; };
+		01F172E921C93AA10065C987 /* ReservationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReservationViewController.h; sourceTree = "<group>"; };
+		01F172EA21C93AA10065C987 /* ReservationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReservationViewController.m; sourceTree = "<group>"; };
+		01F172ED21C93DF10065C987 /* BillingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillingViewController.h; sourceTree = "<group>"; };
+		01F172EE21C93DF10065C987 /* BillingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillingViewController.m; sourceTree = "<group>"; };
+		01F172F121C93FD10065C987 /* TariffViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TariffViewController.h; sourceTree = "<group>"; };
+		01F172F221C93FD10065C987 /* TariffViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TariffViewController.m; sourceTree = "<group>"; };
 		01F25C5421C16156002FAFE7 /* logo_200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_200.png; sourceTree = "<group>"; };
 		01F67CE921C2830C008255BE /* icon_password_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_password_01.png; sourceTree = "<group>"; };
 		01F67CEA21C2830C008255BE /* icon_username_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_username_01.png; sourceTree = "<group>"; };
@@ -284,7 +302,12 @@
 			children = (
 				01CE5D5E21C64F5200B2BC90 /* Login */,
 				01CE5D6221C651CC00B2BC90 /* Home */,
+				01F172EC21C93DCE0065C987 /* Billing */,
 				01CE5D7B21C696D600B2BC90 /* waterList */,
+				01F172DD21C927D20065C987 /* Member */,
+				01F172E421C939EB0065C987 /* Journal */,
+				01F172E821C93A7C0065C987 /* Reservation */,
+				01F172F021C93FB70065C987 /* Tariff */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -349,6 +372,53 @@
 			children = (
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		01F172DD21C927D20065C987 /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				01F172DE21C9281C0065C987 /* SearchMberViewController.h */,
+				01F172DF21C9281C0065C987 /* SearchMberViewController.m */,
+				01F172E121C9362A0065C987 /* MberDetailViewController.h */,
+				01F172E221C9362A0065C987 /* MberDetailViewController.m */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
+		01F172E421C939EB0065C987 /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				01F172E521C939FC0065C987 /* JournalViewController.h */,
+				01F172E621C939FC0065C987 /* JournalViewController.m */,
+			);
+			path = Journal;
+			sourceTree = "<group>";
+		};
+		01F172E821C93A7C0065C987 /* Reservation */ = {
+			isa = PBXGroup;
+			children = (
+				01F172E921C93AA10065C987 /* ReservationViewController.h */,
+				01F172EA21C93AA10065C987 /* ReservationViewController.m */,
+			);
+			path = Reservation;
+			sourceTree = "<group>";
+		};
+		01F172EC21C93DCE0065C987 /* Billing */ = {
+			isa = PBXGroup;
+			children = (
+				01F172ED21C93DF10065C987 /* BillingViewController.h */,
+				01F172EE21C93DF10065C987 /* BillingViewController.m */,
+			);
+			path = Billing;
+			sourceTree = "<group>";
+		};
+		01F172F021C93FB70065C987 /* Tariff */ = {
+			isa = PBXGroup;
+			children = (
+				01F172F121C93FD10065C987 /* TariffViewController.h */,
+				01F172F221C93FD10065C987 /* TariffViewController.m */,
+			);
+			path = Tariff;
 			sourceTree = "<group>";
 		};
 		01F67CED21C2B160008255BE /* NetworkManage */ = {
@@ -603,20 +673,26 @@
 				012750F821C6067C000FDFDB /* UITextField+Expand.m in Sources */,
 				012750E921C60555000FDFDB /* UIButton+Expand.m in Sources */,
 				011BE27521C4BC270044A70C /* NetworkManage.m in Sources */,
+				01F172E021C9281C0065C987 /* SearchMberViewController.m in Sources */,
+				01F172EB21C93AA10065C987 /* ReservationViewController.m in Sources */,
 				01CE5D6521C651E500B2BC90 /* HomeViewController.m in Sources */,
 				012750E221C6049D000FDFDB /* NSDate+Expand.m in Sources */,
+				01F172F321C93FD10065C987 /* TariffViewController.m in Sources */,
 				012750F521C6064C000FDFDB /* UILabel+Expand.m in Sources */,
 				01CE5D5C21C6308500B2BC90 /* YMSuperViewController.m in Sources */,
 				012750E521C604EE000FDFDB /* NSString+Expand.m in Sources */,
 				012750F221C6061C000FDFDB /* UIImageView+Expand.m in Sources */,
+				01F172E721C939FC0065C987 /* JournalViewController.m in Sources */,
 				0196E13B21C00ADB004CB83C /* main.m in Sources */,
 				012750DF21C60460000FDFDB /* NSArray+Expand.m in Sources */,
+				01F172E321C9362A0065C987 /* MberDetailViewController.m in Sources */,
 				01CE5D8121C6973000B2BC90 /* WaterListViewController.m in Sources */,
 				012750EC21C60592000FDFDB /* UIButton+VerificCode.m in Sources */,
 				01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */,
 				0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */,
 				012750FB21C606AF000FDFDB /* UIView+Expand.m in Sources */,
 				012750EF21C605E3000FDFDB /* UIImage+Expand.m in Sources */,
+				01F172EF21C93DF10065C987 /* BillingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
