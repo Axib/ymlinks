@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01084E1421CA75A100FADA1C /* CommodityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01084E1321CA75A100FADA1C /* CommodityViewController.m */; };
+		01084E1721CA762100FADA1C /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01084E1621CA762100FADA1C /* PurchaseViewController.m */; };
+		01084E1F21CA7FB200FADA1C /* TariffViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01084E1D21CA7FB200FADA1C /* TariffViewCell.m */; };
 		011BE27521C4BC270044A70C /* NetworkManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 011BE27421C4BC270044A70C /* NetworkManage.m */; };
 		012750DF21C60460000FDFDB /* NSArray+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 012750DE21C60460000FDFDB /* NSArray+Expand.m */; };
 		012750E221C6049D000FDFDB /* NSDate+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 012750E121C6049D000FDFDB /* NSDate+Expand.m */; };
@@ -72,6 +75,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01084E1221CA75A100FADA1C /* CommodityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommodityViewController.h; sourceTree = "<group>"; };
+		01084E1321CA75A100FADA1C /* CommodityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommodityViewController.m; sourceTree = "<group>"; };
+		01084E1521CA762100FADA1C /* PurchaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseViewController.h; sourceTree = "<group>"; };
+		01084E1621CA762100FADA1C /* PurchaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
+		01084E1C21CA7FB200FADA1C /* TariffViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TariffViewCell.h; sourceTree = "<group>"; };
+		01084E1D21CA7FB200FADA1C /* TariffViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TariffViewCell.m; sourceTree = "<group>"; };
 		011BE27321C4BC270044A70C /* NetworkManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManage.h; sourceTree = "<group>"; };
 		011BE27421C4BC270044A70C /* NetworkManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManage.m; sourceTree = "<group>"; };
 		012750D621C60364000FDFDB /* NotificationName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationName.h; sourceTree = "<group>"; };
@@ -182,6 +191,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01084E1821CA7F4A00FADA1C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01084E1C21CA7FB200FADA1C /* TariffViewCell.h */,
+				01084E1D21CA7FB200FADA1C /* TariffViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		012750D821C603EE000FDFDB /* ExpandCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,8 +433,13 @@
 		01F172F021C93FB70065C987 /* Tariff */ = {
 			isa = PBXGroup;
 			children = (
+				01084E1821CA7F4A00FADA1C /* Cell */,
 				01F172F121C93FD10065C987 /* TariffViewController.h */,
 				01F172F221C93FD10065C987 /* TariffViewController.m */,
+				01084E1221CA75A100FADA1C /* CommodityViewController.h */,
+				01084E1321CA75A100FADA1C /* CommodityViewController.m */,
+				01084E1521CA762100FADA1C /* PurchaseViewController.h */,
+				01084E1621CA762100FADA1C /* PurchaseViewController.m */,
 			);
 			path = Tariff;
 			sourceTree = "<group>";
@@ -669,6 +692,7 @@
 			files = (
 				01F67CF021C2B1A8008255BE /* NetworkInterface.m in Sources */,
 				01F67CF821C2B61D008255BE /* ShopMD.m in Sources */,
+				01084E1F21CA7FB200FADA1C /* TariffViewCell.m in Sources */,
 				01CE5D6821C6690200B2BC90 /* NavigationController.m in Sources */,
 				012750F821C6067C000FDFDB /* UITextField+Expand.m in Sources */,
 				012750E921C60555000FDFDB /* UIButton+Expand.m in Sources */,
@@ -676,7 +700,9 @@
 				01F172E021C9281C0065C987 /* SearchMberViewController.m in Sources */,
 				01F172EB21C93AA10065C987 /* ReservationViewController.m in Sources */,
 				01CE5D6521C651E500B2BC90 /* HomeViewController.m in Sources */,
+				01084E1721CA762100FADA1C /* PurchaseViewController.m in Sources */,
 				012750E221C6049D000FDFDB /* NSDate+Expand.m in Sources */,
+				01084E1421CA75A100FADA1C /* CommodityViewController.m in Sources */,
 				01F172F321C93FD10065C987 /* TariffViewController.m in Sources */,
 				012750F521C6064C000FDFDB /* UILabel+Expand.m in Sources */,
 				01CE5D5C21C6308500B2BC90 /* YMSuperViewController.m in Sources */,

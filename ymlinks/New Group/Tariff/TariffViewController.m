@@ -7,8 +7,10 @@
 //
 
 #import "TariffViewController.h"
+#import "TariffViewCell.h"
 
-@interface TariffViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface TariffViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@property (weak, nonatomic) IBOutlet UICollectionView *tariff_collection;
 
 @end
 
@@ -17,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"价目表";
+    
+    [self.tariff_collection registerClass:[TariffViewCell class] forCellWithReuseIdentifier:NSStringFromClass([TariffViewCell class])];
+
     // Do any additional setup after loading the view.
 }
 
@@ -28,7 +33,7 @@
 
 #pragma mark - UICollectionViewDataSource
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [[UICollectionViewCell alloc] init];
+    TariffViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([TariffViewCell class]) forIndexPath:indexPath];
     
     return cell;
 }
@@ -37,9 +42,19 @@
     return 5;
 }
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    double width = (self.view.bounds.size.width - 60)/5;
+    return CGSizeMake(width, width + 80);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(self.view.bounds.size.width, 80);
+}
+
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self performSegueWithIdentifier:@"intoCommodity" sender:nil];
 }
 
 

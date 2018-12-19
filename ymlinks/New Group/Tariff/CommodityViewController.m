@@ -1,29 +1,27 @@
 //
-//  BillingViewController.m
+//  CommodityViewController.m
 //  ymlinks
 //
-//  Created by nick on 2018/12/18.
+//  Created by nick on 2018/12/19.
 //  Copyright © 2018年 ym. All rights reserved.
 //
 
-#import "BillingViewController.h"
+#import "CommodityViewController.h"
 
-@interface BillingViewController ()
+@interface CommodityViewController ()
 
 @end
 
-@implementation BillingViewController
+@implementation CommodityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"开单";
+    self.title = @"商品详情";
     // Do any additional setup after loading the view.
 }
 
-- (void)popAction:(UIBarButtonItem *)barButtonItem
-{
-    UIViewController *homePage = self.navigationController.viewControllers[0];
-    [self.navigationController popToViewController:homePage animated:YES];
+- (IBAction)purchaseCommodity:(id)sender {
+    [self performSegueWithIdentifier:([sender tag] == 1 ? @"toExperience" : @"buyCommodity") sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

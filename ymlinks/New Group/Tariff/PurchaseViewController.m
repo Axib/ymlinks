@@ -1,29 +1,27 @@
 //
-//  BillingViewController.m
+//  PurchaseViewController.m
 //  ymlinks
 //
-//  Created by nick on 2018/12/18.
+//  Created by nick on 2018/12/19.
 //  Copyright © 2018年 ym. All rights reserved.
 //
 
-#import "BillingViewController.h"
+#import "PurchaseViewController.h"
 
-@interface BillingViewController ()
+@interface PurchaseViewController ()
 
 @end
 
-@implementation BillingViewController
+@implementation PurchaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"开单";
+    self.title = @"购买";
     // Do any additional setup after loading the view.
 }
 
-- (void)popAction:(UIBarButtonItem *)barButtonItem
-{
-    UIViewController *homePage = self.navigationController.viewControllers[0];
-    [self.navigationController popToViewController:homePage animated:YES];
+- (IBAction)saveOrder:(id)sender {
+    [self performSegueWithIdentifier:@"jumpBilling" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
