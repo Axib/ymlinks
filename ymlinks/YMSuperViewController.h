@@ -16,4 +16,6 @@
  */
 @property (nonatomic, strong) UIView *m_navBar;
 
+- (void)showError:(NSString *)errorMsg;
+
 @end

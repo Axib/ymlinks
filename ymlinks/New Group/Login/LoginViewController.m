@@ -74,44 +74,39 @@
         [_login_view setFrame:CGRectMake(rect.origin.x, 184, rect.size.width, rect.size.height)];
     }];
 }
-#pragma mark - 封装弹出对话框方法
-// 提示错误信息
-- (void)showError:(NSString *)errorMsg {
-    // 1.弹框提醒
-    // 初始化对话框
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:errorMsg preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
-    // 弹出对话框
-    [self presentViewController:alert animated:true completion:nil];
-}
-
 
 - (IBAction)sendLoginRequest:(id)sender {
     
-    [self performSegueWithIdentifier:@"GoHomePage" sender:nil];
+    //[self performSegueWithIdentifier:@"GoHomePage" sender:nil];
     
-//    if (_userName.text.length <= 0 || _password.text.length <= 0) {
-//        [self showError:@"请检查用户名和密码是否为空！"];
-//        return;
-//    }
-//
-//    NSDictionary *parameDic = @{@"username": self.userName.text,
-//                                @"password": self.password.text,
-//                                @"type": @"1",
-//                                @"userAgent": @"",
-//                                @"clientIp": @"127.0.0.1"};
-//
-//    [[NetworkManage shareNetworkManage] postJsonRequest:parameDic Tag:NetworkTag_UserLogin Delegate:self];
+    if (_userName.text.length <= 0 || _password.text.length <= 0) {
+        [self showError:@"请检查用户名和密码是否为空！"];
+        return;
+    }
+
+    NSDictionary *parameDic = @{@"username": self.userName.text,
+                                @"password": self.password.text,
+                                @"type": @"1",
+                                @"userAgent": @"",
+                                @"clientIp": @"127.0.0.1"};
+
+    [[NetworkManage shareNetworkManage] postJsonRequest:parameDic Tag:NetworkTag_UserLogin Delegate:self];
 }
 
 /** 网络请求成功 */
 - (void)net_requestSuccess:(id)result Tag:(NetworkInterfaceTag)tag {
     //    [super net_requestSuccess:result Tag:tag];
+    NSLog(@"----%@", result);
     if (tag == NetworkTag_UserLogin) {//返回 登录Token 保存
         m_loginInfo = result;
+        NSLog(@"%@", m_loginInfo);
         //        [self saveLoginInfo];
         [self gotoHomePage];
     }
+}
+
+- (void)net_requestFail:(id)result Tag:(NetworkInterfaceTag)tag {
+    [self showError:[NSString stringWithFormat:@"%@", result]];
 }
 
 /** 前往首页 */

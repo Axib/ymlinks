@@ -19,11 +19,15 @@
             
         case NetworkTag_UserLogin://用户登录
             return [NSString stringWithFormat:@"%@/user/admin/login",
-                    CurrentURL, m_productName, m_currentShopInfo.m_custId, m_currentShopInfo.m_compId];
+                    CurrentURL];
             
-        case NetworkTag_GetShopId://获取门店shopId 主键Id
-            return [NSString stringWithFormat:@"%@/shop/chain/%@/comp/%@/getShopId",
-                    CurrentURL, m_currentShopInfo.m_custId, m_currentShopInfo.m_compId];
+        case NetworkTag_GetWaterList://获取流水列表
+            return [NSString stringWithFormat:@"%@/reserve/bill/comp/detail/get/ex",
+                    CurrentURL];
+            
+        case NetworkTag_GetWaterInfo://获取流水信息
+            return [NSString stringWithFormat:@"%@/reserve/bill/comp/performance/analysis",
+                    CurrentURL];
             
         case NetworkTag_GetShopEmpList://获取门店员工list
             return [NSString stringWithFormat:@"%@/user/designer/shop/%@/get",

@@ -21,6 +21,13 @@
 		012750F521C6064C000FDFDB /* UILabel+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 012750F421C6064C000FDFDB /* UILabel+Expand.m */; };
 		012750F821C6067C000FDFDB /* UITextField+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 012750F721C6067C000FDFDB /* UITextField+Expand.m */; };
 		012750FB21C606AF000FDFDB /* UIView+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 012750FA21C606AF000FDFDB /* UIView+Expand.m */; };
+		013ADC1C21CF50A300C21336 /* BasicPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC1B21CF50A300C21336 /* BasicPopView.m */; };
+		013ADC2121CF517500C21336 /* DateSelectPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC2021CF517500C21336 /* DateSelectPopView.m */; };
+		013ADC2421CF671700C21336 /* WaterListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC2321CF671700C21336 /* WaterListViewCell.m */; };
+		013ADC2621CF685A00C21336 /* img_border_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 013ADC2521CF685900C21336 /* img_border_02.png */; };
+		013ADC2821CF949500C21336 /* img_tagBg_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 013ADC2721CF949500C21336 /* img_tagBg_01.png */; };
+		013ADC2C21CFD39100C21336 /* WaterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC2B21CFD39100C21336 /* WaterDetailViewController.m */; };
+		013ADC2F21CFE60D00C21336 /* WaterDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC2E21CFE60D00C21336 /* WaterDetailViewCell.m */; };
 		0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0196E12C21C00ADB004CB83C /* AppDelegate.m */; };
 		0196E13521C00ADB004CB83C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0196E13421C00ADB004CB83C /* Assets.xcassets */; };
 		0196E13821C00ADB004CB83C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0196E13621C00ADB004CB83C /* LaunchScreen.storyboard */; };
@@ -105,6 +112,18 @@
 		012750F721C6067C000FDFDB /* UITextField+Expand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Expand.m"; sourceTree = "<group>"; };
 		012750F921C606AF000FDFDB /* UIView+Expand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Expand.h"; sourceTree = "<group>"; };
 		012750FA21C606AF000FDFDB /* UIView+Expand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Expand.m"; sourceTree = "<group>"; };
+		013ADC1A21CF50A300C21336 /* BasicPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicPopView.h; sourceTree = "<group>"; };
+		013ADC1B21CF50A300C21336 /* BasicPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicPopView.m; sourceTree = "<group>"; };
+		013ADC1F21CF517500C21336 /* DateSelectPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateSelectPopView.h; sourceTree = "<group>"; };
+		013ADC2021CF517500C21336 /* DateSelectPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateSelectPopView.m; sourceTree = "<group>"; };
+		013ADC2221CF671700C21336 /* WaterListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterListViewCell.h; sourceTree = "<group>"; };
+		013ADC2321CF671700C21336 /* WaterListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterListViewCell.m; sourceTree = "<group>"; };
+		013ADC2521CF685900C21336 /* img_border_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_border_02.png; sourceTree = "<group>"; };
+		013ADC2721CF949500C21336 /* img_tagBg_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_tagBg_01.png; sourceTree = "<group>"; };
+		013ADC2A21CFD39100C21336 /* WaterDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterDetailViewController.h; sourceTree = "<group>"; };
+		013ADC2B21CFD39100C21336 /* WaterDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterDetailViewController.m; sourceTree = "<group>"; };
+		013ADC2D21CFE60D00C21336 /* WaterDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterDetailViewCell.h; sourceTree = "<group>"; };
+		013ADC2E21CFE60D00C21336 /* WaterDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterDetailViewCell.m; sourceTree = "<group>"; };
 		0196E12821C00ADB004CB83C /* ymlinks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ymlinks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0196E12B21C00ADB004CB83C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0196E12C21C00ADB004CB83C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -243,6 +262,41 @@
 			path = UIExpand;
 			sourceTree = "<group>";
 		};
+		013ADC1921CF504E00C21336 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				013ADC1A21CF50A300C21336 /* BasicPopView.h */,
+				013ADC1B21CF50A300C21336 /* BasicPopView.m */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		013ADC1D21CF513100C21336 /* ReuseView */ = {
+			isa = PBXGroup;
+			children = (
+				013ADC1E21CF514900C21336 /* PopView */,
+			);
+			path = ReuseView;
+			sourceTree = "<group>";
+		};
+		013ADC1E21CF514900C21336 /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				013ADC1F21CF517500C21336 /* DateSelectPopView.h */,
+				013ADC2021CF517500C21336 /* DateSelectPopView.m */,
+			);
+			path = PopView;
+			sourceTree = "<group>";
+		};
+		013ADC2921CF949900C21336 /* waterList */ = {
+			isa = PBXGroup;
+			children = (
+				013ADC2521CF685900C21336 /* img_border_02.png */,
+				013ADC2721CF949500C21336 /* img_tagBg_01.png */,
+			);
+			path = waterList;
+			sourceTree = "<group>";
+		};
 		0196E11F21C00ADB004CB83C = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +328,7 @@
 				01F67CF121C2B22D008255BE /* Utility */,
 				01F67CED21C2B160008255BE /* NetworkManage */,
 				0196E16921C01036004CB83C /* images */,
+				013ADC1921CF504E00C21336 /* Basic */,
 				0196E12B21C00ADB004CB83C /* AppDelegate.h */,
 				0196E12C21C00ADB004CB83C /* AppDelegate.m */,
 				01CE5D5A21C6308500B2BC90 /* YMSuperViewController.h */,
@@ -311,6 +366,7 @@
 				01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */,
 				01CE5D6E21C68BB300B2BC90 /* login */,
 				01CE5D6D21C68BA700B2BC90 /* home */,
+				013ADC2921CF949900C21336 /* waterList */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -381,6 +437,8 @@
 				01CE5D8821C6A5EB00B2BC90 /* Cell */,
 				01CE5D7F21C6973000B2BC90 /* WaterListViewController.h */,
 				01CE5D8021C6973000B2BC90 /* WaterListViewController.m */,
+				013ADC2A21CFD39100C21336 /* WaterDetailViewController.h */,
+				013ADC2B21CFD39100C21336 /* WaterDetailViewController.m */,
 			);
 			path = waterList;
 			sourceTree = "<group>";
@@ -388,6 +446,10 @@
 		01CE5D8821C6A5EB00B2BC90 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				013ADC2221CF671700C21336 /* WaterListViewCell.h */,
+				013ADC2321CF671700C21336 /* WaterListViewCell.m */,
+				013ADC2D21CFE60D00C21336 /* WaterDetailViewCell.h */,
+				013ADC2E21CFE60D00C21336 /* WaterDetailViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -458,6 +520,7 @@
 		01F67CF121C2B22D008255BE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				013ADC1D21CF513100C21336 /* ReuseView */,
 				012750D821C603EE000FDFDB /* ExpandCategory */,
 				01F67CF321C2B3AD008255BE /* PrefixHeader.pch */,
 				012750D721C60397000FDFDB /* UserDefaultsKey.h */,
@@ -615,6 +678,7 @@
 				01F67CFB21C2B858008255BE /* MJPhotoBrowser in Resources */,
 				01CE5D7521C68BD300B2BC90 /* icon_water_list.png in Resources */,
 				0196E13521C00ADB004CB83C /* Assets.xcassets in Resources */,
+				013ADC2621CF685A00C21336 /* img_border_02.png in Resources */,
 				0196E16721C00DFA004CB83C /* Main.storyboard in Resources */,
 				01F25C5521C16157002FAFE7 /* logo_200.png in Resources */,
 				01CE5D6C21C6762A00B2BC90 /* icon_search_01.png in Resources */,
@@ -624,6 +688,7 @@
 				01CE5D7621C68BD300B2BC90 /* icon_archives_01.png in Resources */,
 				01CE5D7721C68BD300B2BC90 /* icon_reservation_01.png in Resources */,
 				01CE5D8721C6A50A00B2BC90 /* icon_return_back@3x.png in Resources */,
+				013ADC2821CF949500C21336 /* img_tagBg_01.png in Resources */,
 				01CE5D7421C68BD300B2BC90 /* icon_price_list.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,15 +759,18 @@
 				01F67CF821C2B61D008255BE /* ShopMD.m in Sources */,
 				01084E1F21CA7FB200FADA1C /* TariffViewCell.m in Sources */,
 				01CE5D6821C6690200B2BC90 /* NavigationController.m in Sources */,
+				013ADC2121CF517500C21336 /* DateSelectPopView.m in Sources */,
 				012750F821C6067C000FDFDB /* UITextField+Expand.m in Sources */,
 				012750E921C60555000FDFDB /* UIButton+Expand.m in Sources */,
 				011BE27521C4BC270044A70C /* NetworkManage.m in Sources */,
+				013ADC2421CF671700C21336 /* WaterListViewCell.m in Sources */,
 				01F172E021C9281C0065C987 /* SearchMberViewController.m in Sources */,
 				01F172EB21C93AA10065C987 /* ReservationViewController.m in Sources */,
 				01CE5D6521C651E500B2BC90 /* HomeViewController.m in Sources */,
 				01084E1721CA762100FADA1C /* PurchaseViewController.m in Sources */,
 				012750E221C6049D000FDFDB /* NSDate+Expand.m in Sources */,
 				01084E1421CA75A100FADA1C /* CommodityViewController.m in Sources */,
+				013ADC1C21CF50A300C21336 /* BasicPopView.m in Sources */,
 				01F172F321C93FD10065C987 /* TariffViewController.m in Sources */,
 				012750F521C6064C000FDFDB /* UILabel+Expand.m in Sources */,
 				01CE5D5C21C6308500B2BC90 /* YMSuperViewController.m in Sources */,
@@ -712,7 +780,9 @@
 				0196E13B21C00ADB004CB83C /* main.m in Sources */,
 				012750DF21C60460000FDFDB /* NSArray+Expand.m in Sources */,
 				01F172E321C9362A0065C987 /* MberDetailViewController.m in Sources */,
+				013ADC2F21CFE60D00C21336 /* WaterDetailViewCell.m in Sources */,
 				01CE5D8121C6973000B2BC90 /* WaterListViewController.m in Sources */,
+				013ADC2C21CFD39100C21336 /* WaterDetailViewController.m in Sources */,
 				012750EC21C60592000FDFDB /* UIButton+VerificCode.m in Sources */,
 				01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */,
 				0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */,

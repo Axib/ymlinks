@@ -44,7 +44,7 @@ NetworkManage *m_networkManage;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer    = [AFJSONResponseSerializer serializer];
     
-    [self setHeaderInfo:manager];
+    [self setHeaderInfo:manager type:@"GET"];
     manager.requestSerializer.timeoutInterval = 20.f;
     
     [self.m_requestMap  setObject:manager forKey:@(tag)];
@@ -168,7 +168,7 @@ NetworkManage *m_networkManage;
     
     AFHTTPSessionManager *manager = [self creatRequestManagerAndSaveInfo:delegate WithTag:tag];
     manager.requestSerializer     = [AFJSONRequestSerializer serializer];
-    [self setHeaderInfo:manager];
+    [self setHeaderInfo:manager type:@"POST"];
     
     [delegate net_requestBeginTag:tag];
     
@@ -248,14 +248,26 @@ NetworkManage *m_networkManage;
     } failure:nil];
 }
 
+#define CC_MD5_DIGEST_LENGTH    16          /* digest length in bytes */
+
+#define CC_MD5_BLOCK_BYTES      64          /* block size in bytes */
+
+#define CC_MD5_BLOCK_LONG       (CC_MD5_BLOCK_BYTES / sizeof(CC_LONG))
+
+
 #pragma mark - 设置头部信息
-- (void)setHeaderInfo:(AFHTTPSessionManager *)manager{
+- (void)setHeaderInfo:(AFHTTPSessionManager *)manager type:(NSString *) requestType {
     
     CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
     NSString *deviceUuId = (NSString *)CFBridgingRelease(CFUUIDCreateString (kCFAllocatorDefault,uuidRef));
-    
-    [manager.requestSerializer setValue:deviceUuId
-                     forHTTPHeaderField:@"device_id"];
+    if ([m_loginInfo count]) {
+        [manager.requestSerializer setValue:[NSString ex_stringWithId:[m_loginInfo objectForKey:@"deviceId"]]
+                         forHTTPHeaderField:@"device_id"];
+    }
+    else {
+        [manager.requestSerializer setValue:deviceUuId
+                         forHTTPHeaderField:@"device_id"];
+    }
     
     [manager.requestSerializer setValue:[NSString ex_stringWithId:[m_loginInfo objectForKey:@"accessToken"]]
                      forHTTPHeaderField:@"access_token"];
@@ -266,8 +278,14 @@ NetworkManage *m_networkManage;
     [manager.requestSerializer setValue:[NSString ex_stringWithId:m_AppVersion]
                      forHTTPHeaderField:@"app_version"];
     
-    [manager.requestSerializer setValue:[NSString ex_stringWithId:m_AppVersion]
+    [manager.requestSerializer setValue:[NSString ex_stringWithId:m_productName]
                      forHTTPHeaderField:@"product"];
+    
+    if ([requestType isEqualToString:@"POST"]) {
+        NSString *ticketStr = [NSString stringWithFormat:@"%i%i", (int)([[NSDate date] timeIntervalSince1970] * 1000), arc4random()];
+        [manager.requestSerializer setValue:[ticketStr ex_md5Security]
+                         forHTTPHeaderField:@"ticket"];
+    }
 }
 
 #pragma mark - 网络请求结果

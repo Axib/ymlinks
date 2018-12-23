@@ -30,9 +30,25 @@
     
 }
 
+/** 网络请求成功 */
+- (void)net_requestSuccess:(id)result Tag:(NetworkInterfaceTag)tag {
+    
+}
+
 - (void)popAction:(UIBarButtonItem *)barButtonItem
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - 封装弹出对话框方法
+// 提示错误信息
+- (void)showError:(NSString *)errorMsg {
+    // 1.弹框提醒
+    // 初始化对话框
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:errorMsg preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+    // 弹出对话框
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

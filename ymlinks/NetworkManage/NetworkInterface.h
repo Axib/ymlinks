@@ -26,6 +26,12 @@ typedef enum : NSUInteger {//网络接口
     /** 用户登录 */
     NetworkTag_UserLogin,
     
+    /**************************************** 流水 ****************************************/
+    /** 流水单 */
+    NetworkTag_GetWaterList,
+    /** 流水信息 */
+    NetworkTag_GetWaterInfo,
+    
     /**************************************** 门店 ****************************************/
     /** 获取门店shopId (主键Id) */
     NetworkTag_GetShopId,

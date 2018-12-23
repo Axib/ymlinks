@@ -78,7 +78,7 @@
     m_deviceVersion = [[UIDevice currentDevice] systemVersion];
     
     m_AppVersion    = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-#warning 产品名称
+    #warning 产品名称
     m_productName = @"reception";
     
     /** 默认登录门店信息 */
