@@ -21,4 +21,14 @@
  */
 - (void)ex_setLineSpacing:(CGFloat)lineSpacing;
 
+/**
+ *  文本宽度
+ */
+- (void)ex_widthForText:(CGFloat) padding;
+
+/**
+ *  文本高度
+ */
+- (void)ex_heightForText:(CGFloat) padding;
+
 @end

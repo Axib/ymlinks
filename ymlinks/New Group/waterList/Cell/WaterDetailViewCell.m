@@ -14,6 +14,8 @@
     [super awakeFromNib];
     self.content_view.layer.borderColor = RGBCOLOR(230, 230, 230).CGColor;
     self.content_view.layer.borderWidth = 1;
+    self.paytype_label.layer.cornerRadius = 2;
+    self.labs = [[NSMutableArray alloc] init];
     // Initialization code
 }
 
@@ -25,7 +27,17 @@
 
 - (void)setInfo:(NSDictionary *) info {
     self.name_label.text = [NSString stringWithFormat:@"%@", [info objectForKey:@"projectName"]];
-    self.times_label.text = [NSString stringWithFormat:@"%@次", [info objectForKey:@"quantity"]];
+    [self.name_label ex_widthForText: 0];
+    [self.paytype_label setFrame:CGRectMake(self.name_label.frame.origin.x + self.name_label.frame.size.width + 5,
+                                            self.paytype_label.frame.origin.y,
+                                            self.paytype_label.frame.size.width,
+                                            self.paytype_label.frame.size.height)];
+    self.paytype_label.text = [NSString stringWithFormat:@"%@", [info objectForKey:@"payTypeName"]];
+    [self.paytype_label ex_widthForText: 14];
+    self.times_label.text = [NSString stringWithFormat:@"¥%@", [info objectForKey:@"amount"]];
+    if ([[info objectForKey:@"payType"] isEqualToString:@"COURSE"]) {
+        self.times_label.text = [NSString stringWithFormat:@"%@次", [info objectForKey:@"quantity"]];
+    }
     NSString *staffInfo = @"未分配员工";
     if ([info objectForKey:@"projectEmps"]) {
         NSArray *emps = [info objectForKey:@"projectEmps"];

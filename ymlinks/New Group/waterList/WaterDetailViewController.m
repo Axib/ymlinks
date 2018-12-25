@@ -8,6 +8,7 @@
 
 #import "WaterDetailViewController.h"
 #import "WaterDetailViewCell.h"
+#import "WaterListViewController.h"
 
 @interface WaterDetailViewController ()<UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -32,8 +33,13 @@
     }
 }
 - (IBAction)closeAction:(id)sender {
-    [self dismissViewControllerAnimated:true completion:NULL];
+    [self dismissViewControllerAnimated:true completion:^{
+        if (_delegate && !sender) {
+            [_delegate waterRefresh];
+        }
+    }];
 }
+
 - (IBAction)cancelAction:(id)sender {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"作废提示"
                                                         message:@"确定作废改单据吗？"
@@ -47,10 +53,28 @@
 #pragma UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
-        NSLog(@"是");
+        NSDictionary *parameDic = @{@"billId": [self.infoDic objectForKey:@"id"],
+                                    @"financeDate": [[NSDate date] ex_getDataStrWithFormatType:@"yyyy-MM-dd"],
+                                    @"refundReason": @"",
+                                    @"applyStatus": [NSNumber numberWithInt:1]};//直接审批通过
+        [[NetworkManage shareNetworkManage] postJsonRequest:parameDic Tag:NetworkTag_refundWaterOrder Delegate:self];
     }
-    NSLog(@"%i", buttonIndex);
 }
+
+
+/** 网络请求成功 */
+- (void)net_requestSuccess:(id)result Tag:(NetworkInterfaceTag)tag {
+    [super net_requestSuccess:result Tag:tag];
+    if (tag == NetworkTag_refundWaterOrder) {//返回 流水配
+        [self closeAction:nil];
+    }
+    NSLog(@"%@", result);
+}
+
+- (void)net_requestFail:(id)result Tag:(NetworkInterfaceTag)tag {
+    [self showError:[NSString stringWithFormat:@"%@", result]];
+}
+
 
 #pragma UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

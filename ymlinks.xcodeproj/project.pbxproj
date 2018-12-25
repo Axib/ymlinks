@@ -36,6 +36,7 @@
 		0196E15021C00ADB004CB83C /* ymlinksUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0196E14F21C00ADB004CB83C /* ymlinksUITests.m */; };
 		0196E16721C00DFA004CB83C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0196E16321C00DFA004CB83C /* Main.storyboard */; };
 		0196E16B21C0107F004CB83C /* img_login_element.png in Resources */ = {isa = PBXBuildFile; fileRef = 0196E16A21C0107F004CB83C /* img_login_element.png */; };
+		01B89FEC21D120B4004C67BA /* icon_biaoqian_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B89FEB21D120B3004C67BA /* icon_biaoqian_01.png */; };
 		01CE5D5C21C6308500B2BC90 /* YMSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D5B21C6308500B2BC90 /* YMSuperViewController.m */; };
 		01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D6021C64F7700B2BC90 /* LoginViewController.m */; };
 		01CE5D6521C651E500B2BC90 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D6421C651E500B2BC90 /* HomeViewController.m */; };
@@ -139,6 +140,7 @@
 		0196E15121C00ADB004CB83C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0196E16421C00DFA004CB83C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0196E16A21C0107F004CB83C /* img_login_element.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_login_element.png; sourceTree = "<group>"; };
+		01B89FEB21D120B3004C67BA /* icon_biaoqian_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_biaoqian_01.png; sourceTree = "<group>"; };
 		01CE5D5A21C6308500B2BC90 /* YMSuperViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMSuperViewController.h; sourceTree = "<group>"; };
 		01CE5D5B21C6308500B2BC90 /* YMSuperViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMSuperViewController.m; sourceTree = "<group>"; };
 		01CE5D5F21C64F7700B2BC90 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 		013ADC2921CF949900C21336 /* waterList */ = {
 			isa = PBXGroup;
 			children = (
+				01B89FEB21D120B3004C67BA /* icon_biaoqian_01.png */,
 				013ADC2521CF685900C21336 /* img_border_02.png */,
 				013ADC2721CF949500C21336 /* img_tagBg_01.png */,
 			);
@@ -690,6 +693,7 @@
 				01CE5D8721C6A50A00B2BC90 /* icon_return_back@3x.png in Resources */,
 				013ADC2821CF949500C21336 /* img_tagBg_01.png in Resources */,
 				01CE5D7421C68BD300B2BC90 /* icon_price_list.png in Resources */,
+				01B89FEC21D120B4004C67BA /* icon_biaoqian_01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,15 @@
 
 #import "YMSuperViewController.h"
 
+@protocol WaterRefreshDelegate <NSObject>
+
+- (void)waterRefresh;
+
+@end
+
 @interface WaterDetailViewController : YMSuperViewController
+
+@property(nonatomic,assign) NSObject<WaterRefreshDelegate> *delegate;
 
 @property(nonatomic, strong) NSDictionary *infoDic;
 

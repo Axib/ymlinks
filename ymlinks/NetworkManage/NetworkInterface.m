@@ -29,9 +29,9 @@
             return [NSString stringWithFormat:@"%@/reserve/bill/comp/performance/analysis",
                     CurrentURL];
             
-        case NetworkTag_GetShopEmpList://获取门店员工list
-            return [NSString stringWithFormat:@"%@/user/designer/shop/%@/get",
-                    CurrentURL, m_currentShopInfo.m_shopId];
+        case NetworkTag_refundWaterOrder://流水单作废
+            return [NSString stringWithFormat:@"%@/reserve/bill/refund/save",
+                    CurrentURL];
             
         case NetworkTag_SearchMemberInfoByKeyword://根据关键字查询会员
             return [NSString stringWithFormat:@"%@/cashier/leaguer/leaguerexbyMobile/get", CurrentURL];

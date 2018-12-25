@@ -12,7 +12,7 @@
 #import "MJRefresh.h"
 #import "WaterDetailViewController.h"
 
-@interface WaterListViewController ()<UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface WaterListViewController ()<UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, WaterRefreshDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *content_collection;
 @property (weak, nonatomic) IBOutlet UIView *info_view;
 @property (weak, nonatomic) IBOutlet UIView *title_view;
@@ -73,11 +73,7 @@
         }
         [weakSelf searchData:nil];
     }];
-    double delayInSeconds = 0.3;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [weakSelf.content_collection.mj_header beginRefreshing];
-    });
+    [self waterRefresh];
     // Do any additional setup after loading the view.
 }
 
@@ -263,8 +259,19 @@
     //////这里toVc是拉的那条线的标识符
     if ([segue.identifier isEqualToString:@"jumpOrderDetial"]) {
         WaterDetailViewController *theVc = segue.destinationViewController;
+        theVc.delegate = self;
         theVc.infoDic = _detailInfo;////传的参数
     }
+}
+
+#pragma WaterRefreshDelegate
+- (void)waterRefresh {
+    WEAKSELF;
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [weakSelf.content_collection.mj_header beginRefreshing];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

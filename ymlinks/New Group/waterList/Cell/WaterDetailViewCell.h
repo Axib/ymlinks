@@ -13,7 +13,10 @@
 @property (weak, nonatomic) IBOutlet UIView *info_view;
 @property (weak, nonatomic) IBOutlet UILabel *staff_label;
 @property (weak, nonatomic) IBOutlet UILabel *name_label;
+@property (weak, nonatomic) IBOutlet UILabel *paytype_label;
 @property (weak, nonatomic) IBOutlet UILabel *times_label;
+
+@property (nonatomic, strong) NSMutableArray *labs;
 
 - (void)setInfo:(NSDictionary *) info;
 
