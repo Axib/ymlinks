@@ -37,6 +37,7 @@
 		0196E16721C00DFA004CB83C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0196E16321C00DFA004CB83C /* Main.storyboard */; };
 		0196E16B21C0107F004CB83C /* img_login_element.png in Resources */ = {isa = PBXBuildFile; fileRef = 0196E16A21C0107F004CB83C /* img_login_element.png */; };
 		01B89FEC21D120B4004C67BA /* icon_biaoqian_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B89FEB21D120B3004C67BA /* icon_biaoqian_01.png */; };
+		01CC534E21D3CF5F0074771D /* TariffReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CC534D21D3CF5F0074771D /* TariffReusableView.m */; };
 		01CE5D5C21C6308500B2BC90 /* YMSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D5B21C6308500B2BC90 /* YMSuperViewController.m */; };
 		01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D6021C64F7700B2BC90 /* LoginViewController.m */; };
 		01CE5D6521C651E500B2BC90 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D6421C651E500B2BC90 /* HomeViewController.m */; };
@@ -141,6 +142,8 @@
 		0196E16421C00DFA004CB83C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0196E16A21C0107F004CB83C /* img_login_element.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_login_element.png; sourceTree = "<group>"; };
 		01B89FEB21D120B3004C67BA /* icon_biaoqian_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_biaoqian_01.png; sourceTree = "<group>"; };
+		01CC534C21D3CF5F0074771D /* TariffReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TariffReusableView.h; sourceTree = "<group>"; };
+		01CC534D21D3CF5F0074771D /* TariffReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TariffReusableView.m; sourceTree = "<group>"; };
 		01CE5D5A21C6308500B2BC90 /* YMSuperViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMSuperViewController.h; sourceTree = "<group>"; };
 		01CE5D5B21C6308500B2BC90 /* YMSuperViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMSuperViewController.m; sourceTree = "<group>"; };
 		01CE5D5F21C64F7700B2BC90 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 			children = (
 				01084E1C21CA7FB200FADA1C /* TariffViewCell.h */,
 				01084E1D21CA7FB200FADA1C /* TariffViewCell.m */,
+				01CC534C21D3CF5F0074771D /* TariffReusableView.h */,
+				01CC534D21D3CF5F0074771D /* TariffReusableView.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -772,6 +777,7 @@
 				01F172EB21C93AA10065C987 /* ReservationViewController.m in Sources */,
 				01CE5D6521C651E500B2BC90 /* HomeViewController.m in Sources */,
 				01084E1721CA762100FADA1C /* PurchaseViewController.m in Sources */,
+				01CC534E21D3CF5F0074771D /* TariffReusableView.m in Sources */,
 				012750E221C6049D000FDFDB /* NSDate+Expand.m in Sources */,
 				01084E1421CA75A100FADA1C /* CommodityViewController.m in Sources */,
 				013ADC1C21CF50A300C21336 /* BasicPopView.m in Sources */,

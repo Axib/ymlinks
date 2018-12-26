@@ -10,8 +10,8 @@
 
 @interface TariffViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIImageView *picture_img;
-@property (nonatomic, strong) UILabel *name_label;
-@property (nonatomic, strong) UILabel *price_label;
+@property (weak, nonatomic) IBOutlet UIImageView *picture_img;
+@property (weak, nonatomic) IBOutlet UILabel *name_label;
+@property (weak, nonatomic) IBOutlet UILabel *price_label;
 
 @end
