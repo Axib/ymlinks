@@ -34,11 +34,11 @@ typedef enum : NSUInteger {//网络接口
     /** 作废流水单 */
     NetworkTag_refundWaterOrder,
     
-    /**************************************** 门店 ****************************************/
-    /** 获取门店shopId (主键Id) */
-    NetworkTag_GetShopId,
-    /** 获取门店员工list */
-    NetworkTag_GetShopEmpList,
+    /**************************************** 价目 ****************************************/
+    /** 获取价目分类 */
+    NetworkTag_GetPriceType,
+    /** 获取价目列表 */
+    NetworkTag_GetPriceList,
     
     /**************************************** 会员 ****************************************/
     /** 关键字 查询会员信息 */
@@ -77,7 +77,11 @@ typedef enum : NSUInteger {//网络接口
     /** 获取门店可预约服务项目 */
     NetworkTag_GetCanReservationServiceList,
     /** 新增预约 */
-    NetworkTag_Add
+    NetworkTag_Add,
+    
+    
+    /** 获取门店员工list */
+    NetworkTag_GetShopEmpList
     
 } NetworkInterfaceTag;
 @interface NetworkInterface : NSObject

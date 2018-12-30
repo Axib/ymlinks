@@ -28,6 +28,7 @@
 		013ADC2821CF949500C21336 /* img_tagBg_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 013ADC2721CF949500C21336 /* img_tagBg_01.png */; };
 		013ADC2C21CFD39100C21336 /* WaterDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC2B21CFD39100C21336 /* WaterDetailViewController.m */; };
 		013ADC2F21CFE60D00C21336 /* WaterDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC2E21CFE60D00C21336 /* WaterDetailViewCell.m */; };
+		0174113D21D87D6B006DF37E /* TariffListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0174113C21D87D6B006DF37E /* TariffListViewController.m */; };
 		0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0196E12C21C00ADB004CB83C /* AppDelegate.m */; };
 		0196E13521C00ADB004CB83C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0196E13421C00ADB004CB83C /* Assets.xcassets */; };
 		0196E13821C00ADB004CB83C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0196E13621C00ADB004CB83C /* LaunchScreen.storyboard */; };
@@ -126,6 +127,8 @@
 		013ADC2B21CFD39100C21336 /* WaterDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterDetailViewController.m; sourceTree = "<group>"; };
 		013ADC2D21CFE60D00C21336 /* WaterDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterDetailViewCell.h; sourceTree = "<group>"; };
 		013ADC2E21CFE60D00C21336 /* WaterDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterDetailViewCell.m; sourceTree = "<group>"; };
+		0174113B21D87D6B006DF37E /* TariffListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TariffListViewController.h; sourceTree = "<group>"; };
+		0174113C21D87D6B006DF37E /* TariffListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TariffListViewController.m; sourceTree = "<group>"; };
 		0196E12821C00ADB004CB83C /* ymlinks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ymlinks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0196E12B21C00ADB004CB83C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0196E12C21C00ADB004CB83C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -506,6 +509,8 @@
 				01084E1821CA7F4A00FADA1C /* Cell */,
 				01F172F121C93FD10065C987 /* TariffViewController.h */,
 				01F172F221C93FD10065C987 /* TariffViewController.m */,
+				0174113B21D87D6B006DF37E /* TariffListViewController.h */,
+				0174113C21D87D6B006DF37E /* TariffListViewController.m */,
 				01084E1221CA75A100FADA1C /* CommodityViewController.h */,
 				01084E1321CA75A100FADA1C /* CommodityViewController.m */,
 				01084E1521CA762100FADA1C /* PurchaseViewController.h */,
@@ -792,6 +797,7 @@
 				01F172E321C9362A0065C987 /* MberDetailViewController.m in Sources */,
 				013ADC2F21CFE60D00C21336 /* WaterDetailViewCell.m in Sources */,
 				01CE5D8121C6973000B2BC90 /* WaterListViewController.m in Sources */,
+				0174113D21D87D6B006DF37E /* TariffListViewController.m in Sources */,
 				013ADC2C21CFD39100C21336 /* WaterDetailViewController.m in Sources */,
 				012750EC21C60592000FDFDB /* UIButton+VerificCode.m in Sources */,
 				01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */,

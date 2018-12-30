@@ -33,8 +33,11 @@
             return [NSString stringWithFormat:@"%@/reserve/bill/refund/save",
                     CurrentURL];
             
-        case NetworkTag_SearchMemberInfoByKeyword://根据关键字查询会员
-            return [NSString stringWithFormat:@"%@/cashier/leaguer/leaguerexbyMobile/get", CurrentURL];
+        case NetworkTag_GetPriceType://获取价目分类
+            return [NSString stringWithFormat:@"%@/shop/category/mobile", CurrentURL];
+            
+        case NetworkTag_GetPriceList://获取价目列表
+            return [NSString stringWithFormat:@"%@/shop/project/mobile/cat/get", CurrentURL];
             
         case NetworkTag_SearchVipCardByKeyword://根据关键字查询会员卡
             return [NSString stringWithFormat:@"%@/s3connect/card/chain/%@/comp/%@/list/getCardStatistics?",

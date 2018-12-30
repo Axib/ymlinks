@@ -335,11 +335,11 @@ NetworkManage *m_networkManage;
             
             break;
             
-        case NetworkTag_GetShopId:
-            //获取门店的shopId主键Id
-            [self getShopIdSuccessCallbackResult:resultsInfo[@"result"]];
-            
-            break;
+//        case NetworkTag_GetShopId:
+//            //获取门店的shopId主键Id
+//            [self getShopIdSuccessCallbackResult:resultsInfo[@"result"]];
+//            
+//            break;
             
         case NetworkTag_PostUnprocessedReservationList:
             //获取预约list
