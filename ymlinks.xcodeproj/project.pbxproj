@@ -21,6 +21,10 @@
 		012750F521C6064C000FDFDB /* UILabel+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 012750F421C6064C000FDFDB /* UILabel+Expand.m */; };
 		012750F821C6067C000FDFDB /* UITextField+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 012750F721C6067C000FDFDB /* UITextField+Expand.m */; };
 		012750FB21C606AF000FDFDB /* UIView+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 012750FA21C606AF000FDFDB /* UIView+Expand.m */; };
+		0138A52B21DA60000026CEEC /* BillingConsumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0138A52A21DA60000026CEEC /* BillingConsumeCell.m */; };
+		0138A52E21DA68DC0026CEEC /* Public.m in Sources */ = {isa = PBXBuildFile; fileRef = 0138A52D21DA68DC0026CEEC /* Public.m */; };
+		0138A53221DA78D10026CEEC /* img_fold_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 0138A53021DA78D00026CEEC /* img_fold_01.png */; };
+		0138A53321DA78D10026CEEC /* img_unfold_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 0138A53121DA78D00026CEEC /* img_unfold_01.png */; };
 		013ADC1C21CF50A300C21336 /* BasicPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC1B21CF50A300C21336 /* BasicPopView.m */; };
 		013ADC2121CF517500C21336 /* DateSelectPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC2021CF517500C21336 /* DateSelectPopView.m */; };
 		013ADC2421CF671700C21336 /* WaterListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 013ADC2321CF671700C21336 /* WaterListViewCell.m */; };
@@ -52,6 +56,9 @@
 		01CE5D7821C68BD300B2BC90 /* icon_data_statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 01CE5D7321C68BD200B2BC90 /* icon_data_statistics.png */; };
 		01CE5D8121C6973000B2BC90 /* WaterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D8021C6973000B2BC90 /* WaterListViewController.m */; };
 		01CE5D8721C6A50A00B2BC90 /* icon_return_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */; };
+		01E48F5C21D9EC5B00369899 /* YMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E48F5B21D9EC5B00369899 /* YMTextField.m */; };
+		01E48F6021DA005C00369899 /* HomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E48F5F21DA005C00369899 /* HomeViewCell.m */; };
+		01E48F6221DA0D4D00369899 /* icon_home_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E48F6121DA0D4C00369899 /* icon_home_close.png */; };
 		01F172E021C9281C0065C987 /* SearchMberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172DF21C9281C0065C987 /* SearchMberViewController.m */; };
 		01F172E321C9362A0065C987 /* MberDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172E221C9362A0065C987 /* MberDetailViewController.m */; };
 		01F172E721C939FC0065C987 /* JournalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F172E621C939FC0065C987 /* JournalViewController.m */; };
@@ -115,6 +122,12 @@
 		012750F721C6067C000FDFDB /* UITextField+Expand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Expand.m"; sourceTree = "<group>"; };
 		012750F921C606AF000FDFDB /* UIView+Expand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Expand.h"; sourceTree = "<group>"; };
 		012750FA21C606AF000FDFDB /* UIView+Expand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Expand.m"; sourceTree = "<group>"; };
+		0138A52921DA60000026CEEC /* BillingConsumeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillingConsumeCell.h; sourceTree = "<group>"; };
+		0138A52A21DA60000026CEEC /* BillingConsumeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillingConsumeCell.m; sourceTree = "<group>"; };
+		0138A52C21DA68DC0026CEEC /* Public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Public.h; sourceTree = "<group>"; };
+		0138A52D21DA68DC0026CEEC /* Public.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Public.m; sourceTree = "<group>"; };
+		0138A53021DA78D00026CEEC /* img_fold_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_fold_01.png; sourceTree = "<group>"; };
+		0138A53121DA78D00026CEEC /* img_unfold_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_unfold_01.png; sourceTree = "<group>"; };
 		013ADC1A21CF50A300C21336 /* BasicPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicPopView.h; sourceTree = "<group>"; };
 		013ADC1B21CF50A300C21336 /* BasicPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicPopView.m; sourceTree = "<group>"; };
 		013ADC1F21CF517500C21336 /* DateSelectPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateSelectPopView.h; sourceTree = "<group>"; };
@@ -165,6 +178,11 @@
 		01CE5D7F21C6973000B2BC90 /* WaterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterListViewController.h; sourceTree = "<group>"; };
 		01CE5D8021C6973000B2BC90 /* WaterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterListViewController.m; sourceTree = "<group>"; };
 		01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_return_back@3x.png"; sourceTree = "<group>"; };
+		01E48F5A21D9EC5B00369899 /* YMTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMTextField.h; sourceTree = "<group>"; };
+		01E48F5B21D9EC5B00369899 /* YMTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMTextField.m; sourceTree = "<group>"; };
+		01E48F5E21DA005C00369899 /* HomeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewCell.h; sourceTree = "<group>"; };
+		01E48F5F21DA005C00369899 /* HomeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewCell.m; sourceTree = "<group>"; };
+		01E48F6121DA0D4C00369899 /* icon_home_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_home_close.png; sourceTree = "<group>"; };
 		01F172DE21C9281C0065C987 /* SearchMberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchMberViewController.h; sourceTree = "<group>"; };
 		01F172DF21C9281C0065C987 /* SearchMberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchMberViewController.m; sourceTree = "<group>"; };
 		01F172E121C9362A0065C987 /* MberDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MberDetailViewController.h; sourceTree = "<group>"; };
@@ -232,6 +250,7 @@
 		012750D821C603EE000FDFDB /* ExpandCategory */ = {
 			isa = PBXGroup;
 			children = (
+				01E48F5621D9EAF400369899 /* Delegate */,
 				012750E621C60530000FDFDB /* UIExpand */,
 				012750D921C603FD000FDFDB /* NSExpand */,
 			);
@@ -270,6 +289,24 @@
 				012750FA21C606AF000FDFDB /* UIView+Expand.m */,
 			);
 			path = UIExpand;
+			sourceTree = "<group>";
+		};
+		0138A52821DA5FCB0026CEEC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0138A52921DA60000026CEEC /* BillingConsumeCell.h */,
+				0138A52A21DA60000026CEEC /* BillingConsumeCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0138A52F21DA78BC0026CEEC /* billing */ = {
+			isa = PBXGroup;
+			children = (
+				0138A53021DA78D00026CEEC /* img_fold_01.png */,
+				0138A53121DA78D00026CEEC /* img_unfold_01.png */,
+			);
+			path = billing;
 			sourceTree = "<group>";
 		};
 		013ADC1921CF504E00C21336 /* Basic */ = {
@@ -333,7 +370,7 @@
 		0196E12A21C00ADB004CB83C /* ymlinks */ = {
 			isa = PBXGroup;
 			children = (
-				01CE5D5D21C64F1B00B2BC90 /* New Group */,
+				01CE5D5D21C64F1B00B2BC90 /* Controller */,
 				01F67CF921C2B83F008255BE /* Libs */,
 				01F67CF521C2B603008255BE /* Model */,
 				01F67CF121C2B22D008255BE /* Utility */,
@@ -375,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */,
+				0138A52F21DA78BC0026CEEC /* billing */,
 				01CE5D6E21C68BB300B2BC90 /* login */,
 				01CE5D6D21C68BA700B2BC90 /* home */,
 				013ADC2921CF949900C21336 /* waterList */,
@@ -382,7 +420,7 @@
 			path = images;
 			sourceTree = "<group>";
 		};
-		01CE5D5D21C64F1B00B2BC90 /* New Group */ = {
+		01CE5D5D21C64F1B00B2BC90 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				01CE5D5E21C64F5200B2BC90 /* Login */,
@@ -394,7 +432,7 @@
 				01F172E821C93A7C0065C987 /* Reservation */,
 				01F172F021C93FB70065C987 /* Tariff */,
 			);
-			path = "New Group";
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		01CE5D5E21C64F5200B2BC90 /* Login */ = {
@@ -409,6 +447,7 @@
 		01CE5D6221C651CC00B2BC90 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				01E48F5D21DA003C00369899 /* Cell */,
 				01CE5D6621C6690200B2BC90 /* NavigationController.h */,
 				01CE5D6721C6690200B2BC90 /* NavigationController.m */,
 				01CE5D6321C651E500B2BC90 /* HomeViewController.h */,
@@ -420,6 +459,7 @@
 		01CE5D6D21C68BA700B2BC90 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				01E48F6121DA0D4C00369899 /* icon_home_close.png */,
 				01CE5D6921C66A6E00B2BC90 /* icon_bg_01.png */,
 				01CE5D6B21C6762A00B2BC90 /* icon_search_01.png */,
 				01CE5D7121C68BD200B2BC90 /* icon_archives_01.png */,
@@ -465,6 +505,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		01E48F5621D9EAF400369899 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				01E48F5A21D9EC5B00369899 /* YMTextField.h */,
+				01E48F5B21D9EC5B00369899 /* YMTextField.m */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		01E48F5D21DA003C00369899 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01E48F5E21DA005C00369899 /* HomeViewCell.h */,
+				01E48F5F21DA005C00369899 /* HomeViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		01F172DD21C927D20065C987 /* Member */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +555,7 @@
 		01F172EC21C93DCE0065C987 /* Billing */ = {
 			isa = PBXGroup;
 			children = (
+				0138A52821DA5FCB0026CEEC /* Cell */,
 				01F172ED21C93DF10065C987 /* BillingViewController.h */,
 				01F172EE21C93DF10065C987 /* BillingViewController.m */,
 			);
@@ -539,6 +598,8 @@
 				012750D721C60397000FDFDB /* UserDefaultsKey.h */,
 				01F67CF421C2B58F008255BE /* GlobalVariable.h */,
 				012750D621C60364000FDFDB /* NotificationName.h */,
+				0138A52C21DA68DC0026CEEC /* Public.h */,
+				0138A52D21DA68DC0026CEEC /* Public.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -697,9 +758,12 @@
 				01CE5D6C21C6762A00B2BC90 /* icon_search_01.png in Resources */,
 				01CE5D7821C68BD300B2BC90 /* icon_data_statistics.png in Resources */,
 				01CE5D6A21C66A6E00B2BC90 /* icon_bg_01.png in Resources */,
+				0138A53321DA78D10026CEEC /* img_unfold_01.png in Resources */,
+				01E48F6221DA0D4D00369899 /* icon_home_close.png in Resources */,
 				01F67CEC21C2830C008255BE /* icon_username_01.png in Resources */,
 				01CE5D7621C68BD300B2BC90 /* icon_archives_01.png in Resources */,
 				01CE5D7721C68BD300B2BC90 /* icon_reservation_01.png in Resources */,
+				0138A53221DA78D10026CEEC /* img_fold_01.png in Resources */,
 				01CE5D8721C6A50A00B2BC90 /* icon_return_back@3x.png in Resources */,
 				013ADC2821CF949500C21336 /* img_tagBg_01.png in Resources */,
 				01CE5D7421C68BD300B2BC90 /* icon_price_list.png in Resources */,
@@ -771,6 +835,7 @@
 			files = (
 				01F67CF021C2B1A8008255BE /* NetworkInterface.m in Sources */,
 				01F67CF821C2B61D008255BE /* ShopMD.m in Sources */,
+				01E48F5C21D9EC5B00369899 /* YMTextField.m in Sources */,
 				01084E1F21CA7FB200FADA1C /* TariffViewCell.m in Sources */,
 				01CE5D6821C6690200B2BC90 /* NavigationController.m in Sources */,
 				013ADC2121CF517500C21336 /* DateSelectPopView.m in Sources */,
@@ -786,11 +851,13 @@
 				012750E221C6049D000FDFDB /* NSDate+Expand.m in Sources */,
 				01084E1421CA75A100FADA1C /* CommodityViewController.m in Sources */,
 				013ADC1C21CF50A300C21336 /* BasicPopView.m in Sources */,
+				0138A52E21DA68DC0026CEEC /* Public.m in Sources */,
 				01F172F321C93FD10065C987 /* TariffViewController.m in Sources */,
 				012750F521C6064C000FDFDB /* UILabel+Expand.m in Sources */,
 				01CE5D5C21C6308500B2BC90 /* YMSuperViewController.m in Sources */,
 				012750E521C604EE000FDFDB /* NSString+Expand.m in Sources */,
 				012750F221C6061C000FDFDB /* UIImageView+Expand.m in Sources */,
+				01E48F6021DA005C00369899 /* HomeViewCell.m in Sources */,
 				01F172E721C939FC0065C987 /* JournalViewController.m in Sources */,
 				0196E13B21C00ADB004CB83C /* main.m in Sources */,
 				012750DF21C60460000FDFDB /* NSArray+Expand.m in Sources */,
@@ -802,6 +869,7 @@
 				012750EC21C60592000FDFDB /* UIButton+VerificCode.m in Sources */,
 				01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */,
 				0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */,
+				0138A52B21DA60000026CEEC /* BillingConsumeCell.m in Sources */,
 				012750FB21C606AF000FDFDB /* UIView+Expand.m in Sources */,
 				012750EF21C605E3000FDFDB /* UIImage+Expand.m in Sources */,
 				01F172EF21C93DF10065C987 /* BillingViewController.m in Sources */,

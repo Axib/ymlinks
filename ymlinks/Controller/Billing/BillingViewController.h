@@ -10,4 +10,6 @@
 
 @interface BillingViewController : YMSuperViewController
 
+@property (strong, nonatomic) NSDictionary *memberCard;
+
 @end

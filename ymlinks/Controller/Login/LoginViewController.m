@@ -98,8 +98,6 @@
     NSLog(@"----%@", result);
     if (tag == NetworkTag_UserLogin) {//返回 登录Token 保存
         m_loginInfo = result;
-        NSLog(@"%@", m_loginInfo);
-        //        [self saveLoginInfo];
         [self gotoHomePage];
     }
 }

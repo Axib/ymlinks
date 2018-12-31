@@ -41,10 +41,8 @@ typedef enum : NSUInteger {//网络接口
     NetworkTag_GetPriceList,
     
     /**************************************** 会员 ****************************************/
-    /** 关键字 查询会员信息 */
-    NetworkTag_SearchMemberInfoByKeyword,
     /** 关键字 查询会员卡信息 */
-    NetworkTag_SearchVipCardByKeyword,
+    NetworkTag_SearchMemberCardByKeyword,
     /** 会员卡Id 获取会员信息 */
     NetworkTag_GetMemberInfoByCardId,
     /** 会员卡Id 获取账户信息 */

@@ -236,12 +236,19 @@
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    double width = (collectionView.bounds.size.width - 15*4)/3;
+    double width = (collectionView.bounds.size.width - 10*4)/3;
     return CGSizeMake(width, 160);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     return CGSizeMake(collectionView.frame.size.width, _waterList.count > 0 ? 0 : collectionView.frame.size.height - 70);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    int rowCount = ((int)[_waterList count]/3 + ([_waterList count]%3 > 0 ? 1 : 0));
+    float footerHeight = collectionView.frame.size.height - (160 * rowCount) - 64;
+    footerHeight = footerHeight < 0 ? 0 : footerHeight;
+    return CGSizeMake(0, footerHeight);
 }
 
 #pragma mark - UICollectionViewDelegate

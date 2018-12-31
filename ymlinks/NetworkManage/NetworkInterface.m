@@ -39,9 +39,9 @@
         case NetworkTag_GetPriceList://获取价目列表
             return [NSString stringWithFormat:@"%@/shop/project/mobile/cat/get", CurrentURL];
             
-        case NetworkTag_SearchVipCardByKeyword://根据关键字查询会员卡
-            return [NSString stringWithFormat:@"%@/s3connect/card/chain/%@/comp/%@/list/getCardStatistics?",
-                    CurrentURL, m_currentShopInfo.m_custId, m_currentShopInfo.m_compId];
+        case NetworkTag_SearchMemberCardByKeyword://根据关键字查询会员卡
+            return [NSString stringWithFormat:@"%@/wallet/card/chain",
+                    CurrentURL];
             
         case NetworkTag_GetMemberInfoByCardId://根据卡Id获取会员详情 拼接接口 {会员卡id}/getCustomerInfo
             return [NSString stringWithFormat:@"%@/s3connect/card/chain/%@/card/",

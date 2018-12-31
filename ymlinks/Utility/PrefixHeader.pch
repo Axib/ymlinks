@@ -18,7 +18,7 @@
 
 #import "ShopMD.h"
 
-
+#import "Public.h"
 #import "Masonry.h"
 #import "MBProgressHUD.h"
 
