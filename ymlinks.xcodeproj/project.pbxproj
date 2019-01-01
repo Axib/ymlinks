@@ -71,6 +71,10 @@
 		01F67CF021C2B1A8008255BE /* NetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F67CEF21C2B1A8008255BE /* NetworkInterface.m */; };
 		01F67CF821C2B61D008255BE /* ShopMD.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F67CF721C2B61D008255BE /* ShopMD.m */; };
 		01F67CFB21C2B858008255BE /* MJPhotoBrowser in Resources */ = {isa = PBXBuildFile; fileRef = 01F67CFA21C2B858008255BE /* MJPhotoBrowser */; };
+		01FD1B1721DB548C0034D267 /* icon_history_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01FD1B1621DB548A0034D267 /* icon_history_2@2x.png */; };
+		01FD1B1A21DB6C8F0034D267 /* BillingCommodityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FD1B1921DB6C8F0034D267 /* BillingCommodityCell.m */; };
+		01FD1B1D21DBB8D20034D267 /* BillingGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FD1B1C21DBB8D20034D267 /* BillingGoodsCell.m */; };
+		01FD1B2021DBC2B70034D267 /* TransactionHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FD1B1F21DBC2B70034D267 /* TransactionHistoryCell.m */; };
 		05FF0B6016CF4317E6D3158B /* libPods-ymlinks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F8BFED87CA613038EFD602 /* libPods-ymlinks.a */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +209,13 @@
 		01F67CF621C2B61D008255BE /* ShopMD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopMD.h; sourceTree = "<group>"; };
 		01F67CF721C2B61D008255BE /* ShopMD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopMD.m; sourceTree = "<group>"; };
 		01F67CFA21C2B858008255BE /* MJPhotoBrowser */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MJPhotoBrowser; sourceTree = "<group>"; };
+		01FD1B1621DB548A0034D267 /* icon_history_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_history_2@2x.png"; sourceTree = "<group>"; };
+		01FD1B1821DB6C8F0034D267 /* BillingCommodityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillingCommodityCell.h; sourceTree = "<group>"; };
+		01FD1B1921DB6C8F0034D267 /* BillingCommodityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillingCommodityCell.m; sourceTree = "<group>"; };
+		01FD1B1B21DBB8D20034D267 /* BillingGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillingGoodsCell.h; sourceTree = "<group>"; };
+		01FD1B1C21DBB8D20034D267 /* BillingGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillingGoodsCell.m; sourceTree = "<group>"; };
+		01FD1B1E21DBC2B70034D267 /* TransactionHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionHistoryCell.h; sourceTree = "<group>"; };
+		01FD1B1F21DBC2B70034D267 /* TransactionHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionHistoryCell.m; sourceTree = "<group>"; };
 		A4F8BFED87CA613038EFD602 /* libPods-ymlinks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ymlinks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834F11F154D8BC835355D68 /* Pods-ymlinks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ymlinks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ymlinks/Pods-ymlinks.debug.xcconfig"; sourceTree = "<group>"; };
 		AE0C5CF40097AB00BD445EE1 /* Pods-ymlinks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ymlinks.release.xcconfig"; path = "Pods/Target Support Files/Pods-ymlinks/Pods-ymlinks.release.xcconfig"; sourceTree = "<group>"; };
@@ -296,6 +307,12 @@
 			children = (
 				0138A52921DA60000026CEEC /* BillingConsumeCell.h */,
 				0138A52A21DA60000026CEEC /* BillingConsumeCell.m */,
+				01FD1B1821DB6C8F0034D267 /* BillingCommodityCell.h */,
+				01FD1B1921DB6C8F0034D267 /* BillingCommodityCell.m */,
+				01FD1B1B21DBB8D20034D267 /* BillingGoodsCell.h */,
+				01FD1B1C21DBB8D20034D267 /* BillingGoodsCell.m */,
+				01FD1B1E21DBC2B70034D267 /* TransactionHistoryCell.h */,
+				01FD1B1F21DBC2B70034D267 /* TransactionHistoryCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -303,6 +320,7 @@
 		0138A52F21DA78BC0026CEEC /* billing */ = {
 			isa = PBXGroup;
 			children = (
+				01FD1B1621DB548A0034D267 /* icon_history_2@2x.png */,
 				0138A53021DA78D00026CEEC /* img_fold_01.png */,
 				0138A53121DA78D00026CEEC /* img_unfold_01.png */,
 			);
@@ -767,6 +785,7 @@
 				01CE5D8721C6A50A00B2BC90 /* icon_return_back@3x.png in Resources */,
 				013ADC2821CF949500C21336 /* img_tagBg_01.png in Resources */,
 				01CE5D7421C68BD300B2BC90 /* icon_price_list.png in Resources */,
+				01FD1B1721DB548C0034D267 /* icon_history_2@2x.png in Resources */,
 				01B89FEC21D120B4004C67BA /* icon_biaoqian_01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -846,6 +865,7 @@
 				01F172E021C9281C0065C987 /* SearchMberViewController.m in Sources */,
 				01F172EB21C93AA10065C987 /* ReservationViewController.m in Sources */,
 				01CE5D6521C651E500B2BC90 /* HomeViewController.m in Sources */,
+				01FD1B2021DBC2B70034D267 /* TransactionHistoryCell.m in Sources */,
 				01084E1721CA762100FADA1C /* PurchaseViewController.m in Sources */,
 				01CC534E21D3CF5F0074771D /* TariffReusableView.m in Sources */,
 				012750E221C6049D000FDFDB /* NSDate+Expand.m in Sources */,
@@ -863,11 +883,13 @@
 				012750DF21C60460000FDFDB /* NSArray+Expand.m in Sources */,
 				01F172E321C9362A0065C987 /* MberDetailViewController.m in Sources */,
 				013ADC2F21CFE60D00C21336 /* WaterDetailViewCell.m in Sources */,
+				01FD1B1D21DBB8D20034D267 /* BillingGoodsCell.m in Sources */,
 				01CE5D8121C6973000B2BC90 /* WaterListViewController.m in Sources */,
 				0174113D21D87D6B006DF37E /* TariffListViewController.m in Sources */,
 				013ADC2C21CFD39100C21336 /* WaterDetailViewController.m in Sources */,
 				012750EC21C60592000FDFDB /* UIButton+VerificCode.m in Sources */,
 				01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */,
+				01FD1B1A21DB6C8F0034D267 /* BillingCommodityCell.m in Sources */,
 				0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */,
 				0138A52B21DA60000026CEEC /* BillingConsumeCell.m in Sources */,
 				012750FB21C606AF000FDFDB /* UIView+Expand.m in Sources */,
