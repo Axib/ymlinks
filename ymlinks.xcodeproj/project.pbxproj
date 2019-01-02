@@ -56,6 +56,8 @@
 		01CE5D7821C68BD300B2BC90 /* icon_data_statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 01CE5D7321C68BD200B2BC90 /* icon_data_statistics.png */; };
 		01CE5D8121C6973000B2BC90 /* WaterListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CE5D8021C6973000B2BC90 /* WaterListViewController.m */; };
 		01CE5D8721C6A50A00B2BC90 /* icon_return_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */; };
+		01DDF83721DCFD8B00225E83 /* MemberDepositCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DDF83621DCFD8B00225E83 /* MemberDepositCell.m */; };
+		01DDF83A21DD053000225E83 /* MemberEarnestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DDF83921DD053000225E83 /* MemberEarnestCell.m */; };
 		01E48F5C21D9EC5B00369899 /* YMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E48F5B21D9EC5B00369899 /* YMTextField.m */; };
 		01E48F6021DA005C00369899 /* HomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E48F5F21DA005C00369899 /* HomeViewCell.m */; };
 		01E48F6221DA0D4D00369899 /* icon_home_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E48F6121DA0D4C00369899 /* icon_home_close.png */; };
@@ -182,6 +184,10 @@
 		01CE5D7F21C6973000B2BC90 /* WaterListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterListViewController.h; sourceTree = "<group>"; };
 		01CE5D8021C6973000B2BC90 /* WaterListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterListViewController.m; sourceTree = "<group>"; };
 		01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_return_back@3x.png"; sourceTree = "<group>"; };
+		01DDF83521DCFD8B00225E83 /* MemberDepositCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberDepositCell.h; sourceTree = "<group>"; };
+		01DDF83621DCFD8B00225E83 /* MemberDepositCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberDepositCell.m; sourceTree = "<group>"; };
+		01DDF83821DD053000225E83 /* MemberEarnestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberEarnestCell.h; sourceTree = "<group>"; };
+		01DDF83921DD053000225E83 /* MemberEarnestCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberEarnestCell.m; sourceTree = "<group>"; };
 		01E48F5A21D9EC5B00369899 /* YMTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMTextField.h; sourceTree = "<group>"; };
 		01E48F5B21D9EC5B00369899 /* YMTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMTextField.m; sourceTree = "<group>"; };
 		01E48F5E21DA005C00369899 /* HomeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewCell.h; sourceTree = "<group>"; };
@@ -313,6 +319,10 @@
 				01FD1B1C21DBB8D20034D267 /* BillingGoodsCell.m */,
 				01FD1B1E21DBC2B70034D267 /* TransactionHistoryCell.h */,
 				01FD1B1F21DBC2B70034D267 /* TransactionHistoryCell.m */,
+				01DDF83521DCFD8B00225E83 /* MemberDepositCell.h */,
+				01DDF83621DCFD8B00225E83 /* MemberDepositCell.m */,
+				01DDF83821DD053000225E83 /* MemberEarnestCell.h */,
+				01DDF83921DD053000225E83 /* MemberEarnestCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -858,6 +868,7 @@
 				01084E1F21CA7FB200FADA1C /* TariffViewCell.m in Sources */,
 				01CE5D6821C6690200B2BC90 /* NavigationController.m in Sources */,
 				013ADC2121CF517500C21336 /* DateSelectPopView.m in Sources */,
+				01DDF83A21DD053000225E83 /* MemberEarnestCell.m in Sources */,
 				012750F821C6067C000FDFDB /* UITextField+Expand.m in Sources */,
 				012750E921C60555000FDFDB /* UIButton+Expand.m in Sources */,
 				011BE27521C4BC270044A70C /* NetworkManage.m in Sources */,
@@ -886,6 +897,7 @@
 				01FD1B1D21DBB8D20034D267 /* BillingGoodsCell.m in Sources */,
 				01CE5D8121C6973000B2BC90 /* WaterListViewController.m in Sources */,
 				0174113D21D87D6B006DF37E /* TariffListViewController.m in Sources */,
+				01DDF83721DCFD8B00225E83 /* MemberDepositCell.m in Sources */,
 				013ADC2C21CFD39100C21336 /* WaterDetailViewController.m in Sources */,
 				012750EC21C60592000FDFDB /* UIButton+VerificCode.m in Sources */,
 				01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */,

@@ -11,6 +11,8 @@
 #import "BillingCommodityCell.h"
 #import "BillingGoodsCell.h"
 #import "TransactionHistoryCell.h"
+#import "MemberDepositCell.h"
+#import "MemberEarnestCell.h"
 
 @interface BillingViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *sex_view;
@@ -21,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIView *commodity_bg;
 @property (weak, nonatomic) IBOutlet UIView *shadow_bg;
 @property (weak, nonatomic) IBOutlet UIView *shadow_view;
+@property (weak, nonatomic) IBOutlet UIView *deposit_header;
+@property (weak, nonatomic) IBOutlet UIView *earnest_header;
 @property (weak, nonatomic) IBOutlet UIScrollView *commodity_scroll;
 @property (weak, nonatomic) IBOutlet UITableView *commType_table;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btns;
@@ -125,6 +129,20 @@
     });
     
     _commodityDic = [[NSMutableDictionary alloc] init];
+    
+    [Public setBorderWithView:_commType_table.layer
+                          top:NO
+                         left:NO
+                       bottom:NO
+                        right:YES
+                  borderColor:RGBCOLOR(229, 229, 229)
+                  borderWidth:(CGFloat)1];
+    if ([_commType_table respondsToSelector:@selector(setSeparatorInset:)]) {
+        [_commType_table setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([_commType_table respondsToSelector:@selector(setLayoutMargins:)]) {
+        [_commType_table setLayoutMargins:UIEdgeInsetsZero];
+    }
 
     // Do any additional setup after loading the view.
 }
@@ -138,8 +156,12 @@
         if ([[_functionDic objectForKey:@"flag"] isEqual:@1] || [[_functionDic objectForKey:@"flag"] isEqual:@2]) {
             _shadow_view.hidden = NO;
             [_commodity_scroll setScrollEnabled:true];
+            float timer = 0.5;
+            if (_commodity_scroll.contentOffset.x == 0) {
+                timer = 0.25;
+            }
             [_commodity_scroll setContentOffset:CGPointMake(0, 0)];
-            [UIView animateWithDuration:0.5 animations:^{
+            [UIView animateWithDuration:timer animations:^{
                 [_commodity_scroll setContentOffset:CGPointMake(_commodity_scroll.frame.size.width, 0) animated:false];
             }];
         }
@@ -148,6 +170,14 @@
             [_commodity_scroll setScrollEnabled:false];
             [_commodity_scroll setContentOffset:CGPointMake(_commodity_scroll.frame.size.width, 0) animated:false];
         }
+        _deposit_header.hidden = YES;
+        _earnest_header.hidden = YES;
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@3]) {
+            _deposit_header.hidden = NO;
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@5]) {
+            _earnest_header.hidden = NO;
+        }
         
         [_commodity_table reloadData];
     }];
@@ -155,9 +185,7 @@
 }
 
 - (void)drawPath {
-    
     static double i = 0;
-    
     CGFloat A = 3.5;//A振幅
     CGFloat k = 0;//y轴偏移
     CGFloat ω = 0.35;//角速度ω变大，则波形在X轴上收缩（波形变紧密）；角速度ω变小，则波形在X轴上延展（波形变稀疏）。不等于0
@@ -199,6 +227,20 @@
         [_commType_table setFrame:CGRectMake(_commodity_scroll.contentOffset.x, rect.origin.y, rect.size.width, rect.size.height)];
         
     }
+    else if (scrollView == _commodity_table) {
+        CGRect dRect = _deposit_header.frame;
+        CGRect eRect = _earnest_header.frame;
+        if (_commodity_table.contentOffset.y < 0) {
+            dRect.origin.y = -_commodity_table.contentOffset.y;
+            eRect.origin.y = -_commodity_table.contentOffset.y;
+        }
+        else {
+            dRect.origin.y = 0;
+            eRect.origin.y = 0;
+        }
+        [_deposit_header setFrame:dRect];
+        [_earnest_header setFrame:eRect];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -220,11 +262,31 @@
             
             return cell;
         }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@3]) {
+            MemberDepositCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MemberDepositCell class]) forIndexPath:indexPath];
+            
+            return cell;
+        }
         else if ([[_functionDic objectForKey:@"flag"] isEqual:@4]) {
             TransactionHistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TransactionHistoryCell class]) forIndexPath:indexPath];
             
             return cell;
         }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@5]) {
+            MemberEarnestCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MemberEarnestCell class]) forIndexPath:indexPath];
+            
+            return cell;
+        }
+    }
+    else if (tableView == _commType_table) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commTypeCell" forIndexPath:indexPath];
+        [cell.textLabel setFont:[UIFont systemFontOfSize:13]];
+        [cell.textLabel setText:@"类别名称"];
+        cell.backgroundColor = RGBCOLOR(245,245,245);
+        if (indexPath.row == 0) {
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+        return cell;
     }
     else if (tableView == _consume_table) {
         BillingConsumeCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BillingConsumeCell class]) forIndexPath:indexPath];
@@ -237,6 +299,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == _commodity_table) {
         return 5;
+    }
+    else if (tableView == _commType_table) {
+        return 50;
     }
     else if (tableView == _consume_table) {
         return 5;
@@ -258,9 +323,15 @@
             }
             return 60;
         }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@3] || [[_functionDic objectForKey:@"flag"] isEqual:@5]) {
+            return 50;
+        }
         else if ([[_functionDic objectForKey:@"flag"] isEqual:@4]) {
             return 140;
         }
+    }
+    else if (tableView == _commType_table) {
+        return 45;
     }
     else if (tableView == _consume_table) {
         return 135;
@@ -269,7 +340,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (tableView == _consume_table) {
+    if (tableView == _commodity_table) {
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@3] || [[_functionDic objectForKey:@"flag"] isEqual:@5]) {
+            return 44;
+        }
+    }
+    else if (tableView == _consume_table) {
         return 7;
     }
     return 0;
