@@ -188,6 +188,39 @@ NetworkManage *m_networkManage;
     }];
 }
 
+
+/** Post 带问号参数 */
+- (void)postJsonRequest:(NSDictionary *)parameDic subParam:(NSDictionary *)subParam Tag:(NetworkInterfaceTag)tag Delegate:(id<NetworkManageDelegate>)delegate{
+    NSString *strUrl = [NetworkInterface net_getRequestUrlWithNetworkTag:tag];
+    if (subParam) {
+        for (NSString *key in [subParam allKeys]) {
+            strUrl = [NSString stringWithFormat:@"%@%@", strUrl, ([strUrl containsString:@"?"] ? @"&" : @"?")];
+            strUrl = [NSString stringWithFormat:@"%@%@=%@", strUrl, key, [subParam objectForKey:key]];
+        }
+    }
+    
+    AFHTTPSessionManager *manager = [self creatRequestManagerAndSaveInfo:delegate WithTag:tag];
+    manager.requestSerializer     = [AFJSONRequestSerializer serializer];
+    [self setHeaderInfo:manager type:@"POST"];
+    
+    [delegate net_requestBeginTag:tag];
+    
+    ZNLog(@"当前 网络请求：Tag:%zi \nURL:%@", tag, strUrl);
+    
+    [manager POST:strUrl parameters:parameDic progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        ZNLog(@"成功！");
+        
+        [self requestDataSuccess:task ResponseObject:responseObject Tag:tag Delegate:delegate];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        ZNLog(@"失败");
+        
+        [self requestDataFailed:task Error:error Tag:tag Delegate:delegate];
+    }];
+}
+
 /** 发送 带有二进制的网络请求 */
 - (void)postDataRequest:(NSDictionary *)parameDic UploadData:(NSData *)data UploadKey:(NSString *)key  Tag:(NetworkInterfaceTag)tag Delegate:(id)delegate{
     

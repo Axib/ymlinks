@@ -12,4 +12,8 @@
 
 + (void)setBorderWithView:(CALayer *)vlayer top:(BOOL)top left:(BOOL)left bottom:(BOOL)bottom right:(BOOL)right borderColor:(UIColor *)color borderWidth:(CGFloat)width;
 
++ (NSString *)checkString:(NSString *) string replace:(NSString *) replace;
+
++ (float)checkNumber:(NSString *) number replace:(float) replace;
+
 @end

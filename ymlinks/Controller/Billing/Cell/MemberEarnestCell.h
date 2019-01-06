@@ -10,4 +10,11 @@
 
 @interface MemberEarnestCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *type_label;
+@property (weak, nonatomic) IBOutlet UILabel *date_label;
+@property (weak, nonatomic) IBOutlet UILabel *name_label;
+@property (weak, nonatomic) IBOutlet UILabel *amount_label;
+@property (weak, nonatomic) IBOutlet UILabel *payType_label;
+@property (weak, nonatomic) IBOutlet UILabel *empName_label;
+@property (strong, nonatomic) NSArray *typeList;
 @end

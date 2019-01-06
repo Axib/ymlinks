@@ -185,6 +185,7 @@
         _memberList = result;
         [_member_collection reloadData];
     }
+    NSLog(@"%@", result);
     _searching = false;
 }
 

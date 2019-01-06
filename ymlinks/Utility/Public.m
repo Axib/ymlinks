@@ -39,4 +39,18 @@
     }
 }
 
++ (NSString *)checkString:(NSString *)string replace:(NSString *)replace {
+    if (string) {
+        return string;
+    }
+    return replace;
+}
+
++ (float)checkNumber:(NSString *)number replace:(float)replace {
+    if (number) {
+        return [number floatValue];
+    }
+    return replace;
+}
+
 @end

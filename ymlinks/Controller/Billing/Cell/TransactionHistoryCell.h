@@ -10,4 +10,10 @@
 
 @interface TransactionHistoryCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *date_label;
+@property (weak, nonatomic) IBOutlet UILabel *type_label;
+@property (weak, nonatomic) IBOutlet UILabel *name_label;
+@property (weak, nonatomic) IBOutlet UILabel *price_label;
+@property (weak, nonatomic) IBOutlet UIImageView *autograph_img;
+@property (weak, nonatomic) IBOutlet UILabel *remark_label;
 @end

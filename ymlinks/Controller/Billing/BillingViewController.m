@@ -13,8 +13,10 @@
 #import "TransactionHistoryCell.h"
 #import "MemberDepositCell.h"
 #import "MemberEarnestCell.h"
+#import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
 
-@interface BillingViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface BillingViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, BCommodityCellDelegate, BGoodsCellDelegate>
 @property (weak, nonatomic) IBOutlet UIView *sex_view;
 @property (weak, nonatomic) IBOutlet UITableView *consume_table;
 @property (weak, nonatomic) IBOutlet UIView *btn_view;
@@ -30,6 +32,13 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btns;
 @property (weak, nonatomic) IBOutlet UIView *function_view;
 
+@property (weak, nonatomic) IBOutlet UIImageView *avatar_img;
+@property (weak, nonatomic) IBOutlet UILabel *name_label;
+@property (weak, nonatomic) IBOutlet UILabel *cardNo_label;
+@property (weak, nonatomic) IBOutlet UILabel *accountAmt_lab;
+@property (weak, nonatomic) IBOutlet UILabel *accountPay_lab;
+@property (weak, nonatomic) IBOutlet UILabel *accountGive_lab;
+@property (weak, nonatomic) IBOutlet UILabel *manager_label;
 
 @property (strong, nonatomic) CAShapeLayer *shapeLayer;
 @property (strong, nonatomic) UIBezierPath *path;
@@ -40,6 +49,27 @@
 
 @property (strong, nonatomic) NSMutableDictionary *commodityDic;
 @property (strong, nonatomic) NSMutableArray *commodityArray;
+
+@property (strong, nonatomic) NSArray *payTypeList;
+@property (strong, nonatomic) NSDictionary *systemSetting;
+@property (strong, nonatomic) NSArray *projectTypeList;
+@property (strong, nonatomic) NSArray *productTypeList;
+@property (strong, nonatomic) NSArray *prodStatisticsList;
+@property (strong, nonatomic) NSArray *projStatisticsList;
+@property (strong, nonatomic) NSMutableArray *projInfoList;
+@property (strong, nonatomic) NSMutableArray *prodInfoList;
+@property (strong, nonatomic) NSDictionary *memberInfoDic;
+@property (strong, nonatomic) NSMutableDictionary *cardInfoDic;
+@property (strong, nonatomic) NSDictionary *accountInfoDic;
+@property (strong, nonatomic) NSMutableArray *tradeHistoryList;
+@property (strong, nonatomic) NSMutableArray *memberAdvanceList;
+
+@property (assign, nonatomic) NSInteger projPage;
+@property (assign, nonatomic) NSInteger projTypeIndex;
+@property (assign, nonatomic) NSInteger prodPage;
+@property (assign, nonatomic) NSInteger prodTypeIndex;
+@property (assign, nonatomic) NSInteger tradeHisPage;
+@property (assign, nonatomic) NSInteger memberAdvPage;
 
 @end
 
@@ -109,6 +139,7 @@
                                 @{@"title": @"预付金", @"flag":@5}] : @[
                                 @{@"title": @"单次体验", @"flag":@1},
                                 @{@"title": @"客装产品", @"flag":@2}];
+    
     _functionDic = [_btnNames objectAtIndex:0];
     for (int i = 0; i < _btnNames.count; i++) {
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(i*btnWidth, 0, btnWidth, _function_view.frame.size.height)];
@@ -118,6 +149,7 @@
         [btn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [btn setTitle:[_functionDic objectForKey:@"title"] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(chooseFunction:) forControlEvents:UIControlEventTouchUpInside];
+        [btn.layer setBorderWidth:1];
         [_function_view addSubview:btn];
         
         [Public setBorderWithView:btn.layer top:NO left:NO bottom:NO right:(i < _btnNames.count ? YES : NO) borderColor:RGBCOLOR(238, 238, 238) borderWidth:1];
@@ -143,13 +175,69 @@
     if ([_commType_table respondsToSelector:@selector(setLayoutMargins:)]) {
         [_commType_table setLayoutMargins:UIEdgeInsetsZero];
     }
+    
+    [_commType_table setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    _avatar_img.layer.cornerRadius = 10;
+    _avatar_img.layer.masksToBounds = YES;
+    
+    
+    _commodity_table.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            if (_projInfoList && [_projInfoList count] > 0) {
+                _projPage++;
+            }
+            [self loadRequest:1];
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            if (_prodInfoList && [_prodInfoList count] > 0) {
+                _prodPage++;
+            }
+            [self loadRequest:2];
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@4]) {
+            if (_tradeHistoryList && [_tradeHistoryList count] > 0) {
+                _tradeHisPage++;
+            }
+            [self loadRequest:3];
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@5]) {
+            if (_memberAdvanceList && [_memberAdvanceList count] > 0) {
+                _memberAdvPage++;
+            }
+            [self loadRequest:4];
+        }
+    }];
+    
+    [self loadRequest:0];
 
     // Do any additional setup after loading the view.
 }
 
 - (void)chooseFunction:(UIButton *) sender {
+    for (UIButton *item in _function_view.subviews) {
+        if (sender != item) {
+            [item setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            item.layer.borderColor = [UIColor clearColor].CGColor;
+        }
+        else {
+            [item setTitleColor:RGBCOLOR(188,140,53) forState:UIControlStateNormal];
+            item.layer.borderColor = RGBCOLOR(188,140,53).CGColor;
+            item.layer.borderWidth = 1;
+        }
+    }
     _commodity_index = -1;
     _functionDic = [_btnNames objectAtIndex:[sender tag]];
+    [_commodity_table reloadData];
+    [_commType_table reloadData];
+    [_commodity_table.mj_footer endRefreshing];
+    
+    _commodity_table.mj_footer.hidden = NO;
+    if ([[_functionDic objectForKey:@"flag"] isEqual:@0] || [[_functionDic objectForKey:@"flag"] isEqual:@3]) {
+        _commodity_table.mj_footer.hidden = YES;
+    }
+    
+    //动画
     [UIView animateWithDuration:0.1 animations:^{
         [_commodity_table setContentOffset:CGPointMake(0, 0)];
     } completion:^(BOOL finished) {
@@ -178,8 +266,6 @@
         else if ([[_functionDic objectForKey:@"flag"] isEqual:@5]) {
             _earnest_header.hidden = NO;
         }
-        
-        [_commodity_table reloadData];
     }];
     
 }
@@ -254,37 +340,151 @@
     if (tableView == _commodity_table) {
         if ([[_functionDic objectForKey:@"flag"] isEqual:@0]) {
             BillingCommodityCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BillingCommodityCell class]) forIndexPath:indexPath];
-            
+            cell.delegate = self;
+            cell.tag = indexPath.row;
+            NSDictionary *data = [[_cardInfoDic objectForKey:@"projects"] objectAtIndex:indexPath.row];
+            [cell.name_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"courseName"]]];
+            [cell.price_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"remainTimes"]]];
+            [cell.times_label setText:[NSString stringWithFormat:@"／%@次", [data objectForKey:@"quantity"]]];
+            NSString *dateStr = [data objectForKey:@"createDate"];
+            if (dateStr && dateStr.length > 10) {
+                dateStr = [dateStr substringToIndex:10];
+            }
+            [cell.buy_label setText:[NSString stringWithFormat:@"购买日期：%@", dateStr]];
+            dateStr = [data objectForKey:@"expireDate"];
+            if (dateStr && dateStr.length > 10) {
+                dateStr = [dateStr substringToIndex:10];
+            }
+            [cell.term_label setText:[NSString stringWithFormat:@"过期日期：%@", dateStr]];
+            [cell.remark_txt setText:[NSString stringWithFormat:@"%@", ([data objectForKey:@"remark"] ? [data objectForKey:@"remark"] : @"")]];
+            [cell.count_text setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"count"]]];
+            [cell.emp_text setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"emps"]]];
+            cell.save_btn.userInteractionEnabled = NO;
+            cell.save_icon.hidden = YES;
+            if (_commodity_index == indexPath.row) {
+                cell.save_btn.userInteractionEnabled = YES;
+                cell.save_icon.hidden = NO;
+            }
             return cell;
         }
-        else if ([[_functionDic objectForKey:@"flag"] isEqual:@1] || [[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
             BillingGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BillingGoodsCell class]) forIndexPath:indexPath];
-            
+            cell.delegate = self;
+            cell.tag = indexPath.row;
+            NSDictionary *data = [_projInfoList objectAtIndex:indexPath.row];
+            [cell.name_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"name"]]];
+            [cell.price_label setText:[NSString stringWithFormat:@"¥%@", [data objectForKey:@"price"]]];
+            [cell.count_text setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"count"]]];
+            [cell.price_text setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"price_s"]]];
+            [cell.emps_text setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"emps"]]];
+            return cell;
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            BillingGoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([BillingGoodsCell class]) forIndexPath:indexPath];
+            cell.delegate = self;
+            cell.tag = indexPath.row;
+            NSDictionary *data = [_prodInfoList objectAtIndex:indexPath.row];
+            [cell.name_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"name"]]];
+            [cell.price_label setText:[NSString stringWithFormat:@"¥%@", [data objectForKey:@"price"]]];
+            [cell.count_text setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"count"]]];
+            [cell.price_text setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"price_s"]]];
+            [cell.emps_text setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"emps"]]];
             return cell;
         }
         else if ([[_functionDic objectForKey:@"flag"] isEqual:@3]) {
             MemberDepositCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MemberDepositCell class]) forIndexPath:indexPath];
-            
+            NSDictionary *data = [[_cardInfoDic objectForKey:@"goods"] objectAtIndex:indexPath.row];
+            [cell.pName_lab setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"projectName"]]];
+            NSString *dateStr = [data objectForKey:@"createDate"];
+            if (dateStr && dateStr.length > 10) {
+                dateStr = [dateStr substringToIndex:10];
+            }
+            [cell.date_label setText:[NSString stringWithFormat:@"%@", dateStr]];
+            [cell.sName_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"operatorName"]]];
+            NSString *number = @"0";
+            if ([data objectForKey:@"quantity"]) {
+                number = [data objectForKey:@"quantity"];
+            }
+            [cell.dNumber_label setText:[NSString stringWithFormat:@"%@", number]];
+            number = @"0";
+            if ([data objectForKey:@"quantity"]) {
+                number = [data objectForKey:@"quantity"];
+                if ([data objectForKey:@"remainTimes"]) {
+                    number = [NSString stringWithFormat:@"%.2f", [number floatValue] - [[data objectForKey:@"remainTimes"] floatValue]];
+                }
+            }
+            [cell.uNumber_label setText:[NSString stringWithFormat:@"%@", number]];
+            number = @"0";
+            if ([data objectForKey:@"remainTimes"]) {
+                number = [data objectForKey:@"remainTimes"];
+            }
+            [cell.lNumber_label setText:[NSString stringWithFormat:@"%@", number]];
             return cell;
         }
         else if ([[_functionDic objectForKey:@"flag"] isEqual:@4]) {
             TransactionHistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TransactionHistoryCell class]) forIndexPath:indexPath];
-            
+            NSDictionary *data = [_tradeHistoryList  objectAtIndex:indexPath.row];
+            NSString *dateStr = [data objectForKey:@"createDate"];
+            if (dateStr && dateStr.length > 10) {
+                dateStr = [dateStr substringToIndex:10];
+            }
+            [cell.date_label setText:[NSString stringWithFormat:@"%@", dateStr]];
+            [cell.type_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"typeName"]]];
+            [cell.name_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"shopName"]]];
+            NSString *price = @"0";
+            if ([data objectForKey:@"amount"]) {
+                price = [data objectForKey:@"amount"];
+            }
+            [cell.price_label setText:[NSString stringWithFormat:@"¥%@", price]];
+            [cell.autograph_img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [data objectForKey:@"signature"]]]];
+            [cell.remark_label setText:@"备注信息"];
+            if ([data objectForKey:@"remark"] && [[data objectForKey:@"remark"] length] > 10) {
+                [cell.remark_label setText:[NSString stringWithFormat:@"备注：%@", [data objectForKey:@"remark"]]];
+            }
             return cell;
         }
         else if ([[_functionDic objectForKey:@"flag"] isEqual:@5]) {
             MemberEarnestCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([MemberEarnestCell class]) forIndexPath:indexPath];
-            
+            NSDictionary *data = [_memberAdvanceList  objectAtIndex:indexPath.row];
+            [cell.type_label setText:[cell.typeList objectAtIndex:[Public checkNumber:[data objectForKey:@"type"] replace:0]]];
+            NSString *dateStr = [data objectForKey:@"createDate"];
+            if (dateStr && dateStr.length > 10) {
+                dateStr = [dateStr substringToIndex:10];
+            }
+            [cell.date_label setText:[NSString stringWithFormat:@"%@", dateStr]];
+            [cell.name_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"shopName"]]];
+            [cell.amount_label setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"amount"]]];
+            [cell.payType_label setText:[NSString stringWithFormat:@"%@", [Public checkString:[data objectForKey:@"payName"]  replace:@"未知"]]];
+            [cell.empName_label setText:[NSString stringWithFormat:@"%@", [Public checkString:[data objectForKey:@"sellerName"]  replace:@"未知"]]];
             return cell;
         }
     }
     else if (tableView == _commType_table) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commTypeCell" forIndexPath:indexPath];
         [cell.textLabel setFont:[UIFont systemFontOfSize:13]];
-        [cell.textLabel setText:@"类别名称"];
         cell.backgroundColor = RGBCOLOR(245,245,245);
-        if (indexPath.row == 0) {
-            cell.backgroundColor = [UIColor whiteColor];
+        
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            if (indexPath.row == _projTypeIndex) {
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+        }
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            if (indexPath.row == _prodTypeIndex) {
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+        }
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            NSDictionary *data = [_projStatisticsList objectAtIndex:indexPath.row];
+            if ([data objectForKey:@"name"]) {
+                [cell.textLabel setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"name"]]];
+            }
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            NSDictionary *data = [_prodStatisticsList objectAtIndex:indexPath.row];
+            if ([data objectForKey:@"name"]) {
+                [cell.textLabel setText:[NSString stringWithFormat:@"%@", [data objectForKey:@"name"]]];
+            }
         }
         return cell;
     }
@@ -298,10 +498,48 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == _commodity_table) {
-        return 5;
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@0]) {
+            if (_cardInfoDic && [_cardInfoDic objectForKey:@"projects"]) {
+                return [[_cardInfoDic objectForKey:@"projects"] count];
+            }
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            if (_projInfoList) {
+                return [_projInfoList count];
+            }
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            if (_prodInfoList) {
+                return [_prodInfoList count];
+            }
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@3]) {
+            if (_cardInfoDic && [_cardInfoDic objectForKey:@"goods"]) {
+                return [[_cardInfoDic objectForKey:@"goods"] count];
+            }
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@4]) {
+            if (_tradeHistoryList) {
+                return [_tradeHistoryList count];
+            }
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@5]) {
+            if (_memberAdvanceList) {
+                return [_memberAdvanceList count];
+            }
+        }
     }
     else if (tableView == _commType_table) {
-        return 50;
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            if (_projStatisticsList) {
+                return [_projStatisticsList count];
+            }
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            if (_prodStatisticsList) {
+                return [_prodStatisticsList count];
+            }
+        }
     }
     else if (tableView == _consume_table) {
         return 5;
@@ -358,8 +596,59 @@
 #pragma UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _commodity_table) {
-        _commodity_index = indexPath.row;
+        if (_commodity_index == indexPath.row) {
+            _commodity_index = -1;
+        }
+        else {
+            _commodity_index = indexPath.row;
+        }
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@0]) {
+            NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[[_cardInfoDic objectForKey:@"projects"] objectAtIndex:indexPath.row]];
+            [data setValue:@"1" forKey:@"count"];
+            [data setValue:@"" forKey:@"emps"];
+            [[_cardInfoDic objectForKey:@"projects"] replaceObjectAtIndex:indexPath.row withObject:data];
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_projInfoList objectAtIndex:indexPath.row]];
+            [data setValue:[data objectForKey:@"price"] forKey:@"price_s"];
+            [data setValue:@"1" forKey:@"count"];
+            [data setValue:@"" forKey:@"emps"];
+            [_projInfoList replaceObjectAtIndex:indexPath.row withObject:data];
+            
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_prodInfoList objectAtIndex:indexPath.row]];
+            [data setValue:[data objectForKey:@"price"] forKey:@"price_s"];
+            [data setValue:@"1" forKey:@"count"];
+            [data setValue:@"" forKey:@"emps"];
+            [_prodInfoList replaceObjectAtIndex:indexPath.row withObject:data];
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@3]) {
+            
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@4]) {
+            
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@5]) {
+            
+        }
         [_commodity_table reloadData];
+    }
+    else if (tableView == _commType_table) {
+        [_commodity_table.mj_footer endRefreshing];
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            _projTypeIndex = indexPath.row;
+            _projPage = 1;
+            _commodity_table.mj_footer.hidden = NO;
+            [self loadRequest:1];
+        }
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            _prodTypeIndex = indexPath.row;
+            _prodPage = 1;
+            _commodity_table.mj_footer.hidden = NO;
+            [self loadRequest:2];
+        }
+        [_commType_table reloadData];
     }
 }
 
@@ -370,11 +659,393 @@
     [self.navigationController popToViewController:homePage animated:YES];
 }
 
+- (void)loadRequest:(int) flag {
+    NSDictionary *parameDic = @{};
+    if (!flag) {
+        //支付方式
+        //1现金类cashFlag 2销卡类cardFlag 3开单billFlag 4卡异动exchangeFlag(开卡,充值,买套餐) 5疗程销售courseFlag 6退卡refundFlag
+        parameDic = @{@"billFlag": @"1"};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetPayType Delegate:self];
+        
+        //获取服务人数
+        parameDic = @{@"key": @"serverCount",
+                      @"compId": [m_loginInfo objectForKey:@"compId"]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetServiceCount Delegate:self];
+        
+        //获取系统参数
+        parameDic = @{@"compId": [m_loginInfo objectForKey:@"compId"]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetSystemSetting Delegate:self];
+        
+        //获取大类
+        //产品
+        parameDic = @{@"type": @"0",
+                      @"chainId": [m_loginInfo objectForKey:@"chainId"]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetProjType Delegate:self];
+        //项目
+        parameDic = @{@"type": @"1",
+                      @"chainId": [m_loginInfo objectForKey:@"chainId"]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetProdType Delegate:self];
+        
+        //获取统计分类
+        //产品
+        parameDic = @{@"type": @"0",
+                      @"chainId": [m_loginInfo objectForKey:@"chainId"]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetProjStatisticsType Delegate:self];
+        //项目
+        parameDic = @{@"type": @"1",
+                      @"chainId": [m_loginInfo objectForKey:@"chainId"]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetProdStatisticsType Delegate:self];
+        
+        //获取会员资料
+        [[NetworkManage shareNetworkManage] getRequest:nil Tag:NetworkTag_GetMemberInfoByUserId Delegate:self
+                                            SpliceInfo:@[[self.memberCard objectForKey:@"userId"], @"get"]];
+        
+        //获取会员卡资料
+        [[NetworkManage shareNetworkManage] getRequest:nil Tag:NetworkTag_GetCardInfoById Delegate:self
+                                            SpliceInfo:@[[self.memberCard objectForKey:@"id"], @"get"]];
+        
+        //获取会员帐户
+        parameDic = @{@"userId": [self.memberCard objectForKey:@"userId"]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetAccountByUserId Delegate:self];
+    }
+    if (!flag || flag == 1) {
+        if (!_projPage) {
+            _projPage = 1;
+            _projTypeIndex = 0;
+        }
+        //获取项目列表/api/project/list?type=0&page=
+        parameDic = @{@"type": @"0",
+                      @"page": [NSNumber numberWithInteger:_projPage]};
+        if (_projTypeIndex > 0) {
+            parameDic = @{@"type": @"0",
+                          @"page": [NSNumber numberWithInteger:_projPage],
+                          @"reportCatId": [[_projStatisticsList objectAtIndex:_projTypeIndex] objectForKey:@"id"]};
+        }
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetProjectList Delegate:self];
+    }
+    if (!flag || flag == 2) {
+        if (!_prodPage) {
+            _prodPage = 1;
+            _prodTypeIndex = 0;
+        }
+        //获取产品列表/api/project/list?type=1&page=
+        parameDic = @{@"type": @"1",
+                      @"page": [NSNumber numberWithInteger:_prodPage]};
+        if (_prodTypeIndex > 0) {
+            parameDic = @{@"type": @"1",
+                          @"page": [NSNumber numberWithInteger:_prodPage],
+                          @"reportCatId": [[_prodStatisticsList objectAtIndex:_prodTypeIndex] objectForKey:@"id"]};
+        }
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetProductList Delegate:self];
+    }
+    if (!flag || flag == 3) {
+        if (!_tradeHisPage) {
+            _tradeHisPage = 1;
+        }
+        //查询会员帐户历史/api/user/card/-/trade/history?page=
+        parameDic = @{@"cardId": [self.memberCard objectForKey:@"id"],
+                      @"page": [NSNumber numberWithInteger:_tradeHisPage]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetTradeHistory Delegate:self];
+    }
+    if (!flag || flag == 4) {
+        if (!_memberAdvPage) {
+            _memberAdvPage = 1;
+        }
+        //获取会员保证金账户历史/api/user/-/advance?page=
+        parameDic = @{@"userId": [self.memberCard objectForKey:@"userId"],
+                      @"page": [NSNumber numberWithInteger:_memberAdvPage]};
+        [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetMemberAdvance Delegate:self];
+    }
+}
+
+/** 网络请求成功 */
+- (void)net_requestSuccess:(id)result Tag:(NetworkInterfaceTag)tag {
+    [super net_requestSuccess:result Tag:tag];
+    if (tag == NetworkTag_UpdateCourseRemark) {
+        [self showError:@"修改成功！"];
+        return;
+    }
+    if (tag == NetworkTag_GetPayType) {
+        //开单支付方式
+        _payTypeList = result;
+    }
+    if (tag == NetworkTag_GetServiceCount) {
+        //获取系统参数
+        _systemSetting = result;
+    }
+    if (tag == NetworkTag_GetProjType) {
+        //获取项目大类
+        _projectTypeList = result;
+    }
+    if (tag == NetworkTag_GetProdType) {
+        //获取产品大类
+        _productTypeList = result;
+    }
+    if (tag == NetworkTag_GetProjStatisticsType) {
+        //获取项目统计分类
+        _projStatisticsList = [@[@{@"name": @"全部"}] arrayByAddingObjectsFromArray:result];
+    }
+    if (tag == NetworkTag_GetProdStatisticsType) {
+        //获取产品统计分类
+        _prodStatisticsList = [@[@{@"name": @"全部"}] arrayByAddingObjectsFromArray:result];
+    }
+    if (tag == NetworkTag_GetMemberInfoByUserId) {
+        //获取会员资料
+        _memberInfoDic = result;
+        //姓名
+        _name_label.text = @"匿名";
+        if (_memberInfoDic && [_memberInfoDic objectForKey:@"realname"]) {
+            _name_label.text = [NSString stringWithFormat:@"%@", [_memberInfoDic objectForKey:@"realname"]];
+        }
+        //负责业务员
+        _manager_label.text = @"暂无业务员";
+        if (_memberInfoDic && [_memberInfoDic objectForKey:@"belongEmpName"]) {
+            _manager_label.text = [NSString stringWithFormat:@"%@", [_memberInfoDic objectForKey:@"belongEmpName"]];
+        }
+        //头像
+        [_avatar_img setImage:[UIImage imageNamed:@"logo_200"]];
+        if (_memberInfoDic && [_memberInfoDic objectForKey:@"avatar"]) {
+            [_avatar_img sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?imageView2/1/w/200/h/200", [_memberInfoDic objectForKey:@"avatar"]]] placeholderImage:[UIImage imageNamed:@"logo_200"]];
+        }
+    }
+    if (tag == NetworkTag_GetCardInfoById) {
+        //获取会员卡资料
+        _cardInfoDic = [NSMutableDictionary dictionaryWithDictionary:result];
+        if ([result objectForKey:@"projects"]) {
+            [_cardInfoDic setObject:[NSMutableArray arrayWithArray:[result objectForKey:@"projects"]] forKey:@"projects"];
+        }
+        if ([result objectForKey:@"goods"]) {
+            [_cardInfoDic setObject:[NSMutableArray arrayWithArray:[result objectForKey:@"goods"]] forKey:@"goods"];
+        }
+        //卡号
+        _cardNo_label.text = @"无卡号";
+        if (_cardInfoDic && [_cardInfoDic objectForKey:@"cardNo"]) {
+            _cardNo_label.text = [NSString stringWithFormat:@"卡号.%@", [_cardInfoDic objectForKey:@"cardNo"]];
+        }
+        //储值金额
+        _accountAmt_lab.text = @"0";
+        if (_cardInfoDic && [_cardInfoDic objectForKey:@"balance"]) {
+            _accountAmt_lab.text = [NSString stringWithFormat:@"%@", [_cardInfoDic objectForKey:@"balance"]];
+        }
+        //待付总额
+        _accountPay_lab.text = @"0";
+        if (_cardInfoDic && [_cardInfoDic objectForKey:@"proOverdraft"]) {
+            _accountPay_lab.text = [NSString stringWithFormat:@"%@", [_cardInfoDic objectForKey:@"proOverdraft"]];
+        }
+        //赠送金额
+        _accountGive_lab.text = @"0";
+        if (_cardInfoDic && [_cardInfoDic objectForKey:@"innerBestowal"]) {
+            _accountGive_lab.text = [NSString stringWithFormat:@"%@", [_cardInfoDic objectForKey:@"innerBestowal"]];
+        }
+    }
+    if (tag == NetworkTag_GetAccountByUserId) {
+        //获取会员帐户资料
+        _accountInfoDic = result;
+    }
+    if (tag == NetworkTag_GetProjectList) {
+        //获取项目资料
+        if (_projPage == 1) {
+            _projInfoList = [NSMutableArray arrayWithArray:result];
+        }
+        else {
+            if (result && [result count] > 0) {
+                [_projInfoList addObjectsFromArray:result];
+            }
+            else {
+                if (_projPage > 1) {
+                    _projPage--;
+                }
+                _commodity_table.mj_footer.hidden = YES;
+            }
+        }
+    }
+    if (tag == NetworkTag_GetProductList) {
+        //获取产品资料
+        if (_prodPage == 1) {
+            _prodInfoList = [NSMutableArray arrayWithArray:result];
+        }
+        else {
+            if (result && [result count] > 0) {
+                [_prodInfoList addObjectsFromArray:result];
+            }
+            else {
+                if (_prodPage > 1) {
+                    _prodPage--;
+                }
+                _commodity_table.mj_footer.hidden = YES;
+            }
+        }
+    }
+    if (tag == NetworkTag_GetTradeHistory) {
+        //获取帐户记录
+        if (_tradeHisPage == 1) {
+            _tradeHistoryList = [NSMutableArray arrayWithArray:result];
+        }
+        else {
+            if (result && [result count] > 0) {
+                [_tradeHistoryList addObjectsFromArray:result];
+            }
+            else {
+                if (_tradeHisPage > 1) {
+                    _tradeHisPage--;
+                }
+                _commodity_table.mj_footer.hidden = YES;
+            }
+        }
+    }
+    if (tag == NetworkTag_GetMemberAdvance) {
+        //获取会员保证金账户历史
+        if (_memberAdvPage == 1) {
+            _memberAdvanceList = [NSMutableArray arrayWithArray:result];
+        }
+        else {
+            if (result && [result count] > 0) {
+                [_memberAdvanceList addObjectsFromArray:result];
+            }
+            else {
+                if (_memberAdvPage > 1) {
+                    _memberAdvPage--;
+                }
+                _commodity_table.mj_footer.hidden = YES;
+            }
+        }
+    }
+    [_commodity_table.mj_footer endRefreshing];
+    [_commodity_table reloadData];
+    NSLog(@"%@", result);
+}
+
+- (void)net_requestFail:(id)result Tag:(NetworkInterfaceTag)tag {
+    [self showError:[NSString stringWithFormat:@"%@", result]];
+    if (tag == NetworkTag_GetProjectList) {
+        //获取项目资料
+        if (_projPage > 1) {
+            _projPage--;
+        }
+    }
+    if (tag == NetworkTag_GetProductList) {
+        //获取产品资料
+        if (_prodPage > 1) {
+            _prodPage--;
+        }
+    }
+    if (tag == NetworkTag_GetTradeHistory) {
+        //获取帐户记录
+        if (_tradeHisPage > 1) {
+            _tradeHisPage--;
+        }
+    }
+    if (tag == NetworkTag_GetMemberAdvance) {
+        //获取会员保证金账户历史
+        if (_memberAdvPage > 1) {
+            _memberAdvPage--;
+        }
+    }
+    [_commodity_table.mj_footer endRefreshing];
+}
+
+#pragma BCommodityCellDelegate
+- (void)commodityCell:(NSInteger)row flag:(NSInteger)flag {
+    if (flag == -1) {
+        //取消
+        _commodity_index = -1;
+        [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    else if (flag == -2) {
+        //确定
+    }
+    else if (flag == -3) {
+        NSDictionary *data = [[_cardInfoDic objectForKey:@"projects"] objectAtIndex:row];
+        //保存备注
+        NSDictionary *parameDic = @{@"courseId": [data objectForKey:@"id"],
+                                    @"newRemark": [data objectForKey:@"remark"]};
+        [[NetworkManage shareNetworkManage] postJsonRequest:NULL subParam:parameDic Tag:NetworkTag_UpdateCourseRemark Delegate:self];
+    }
+    else if (flag == 0) {
+        if (_commodity_index != row) {
+            [self tableView:_commodity_table didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+        }
+        else {
+            NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[[_cardInfoDic objectForKey:@"projects"] objectAtIndex:row]];
+            [self beginFloatInput:[data objectForKey:@"remark"] placeholder:@"请输入备注" result:^(NSString *text) {
+                [data setValue:[NSString stringWithFormat:@"%@", text] forKey:@"remark"];
+                [[_cardInfoDic objectForKey:@"projects"] replaceObjectAtIndex:row withObject:data];
+                [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }];
+        }
+    }
+    else if (flag == 1) {
+        //数量
+        NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[[_cardInfoDic objectForKey:@"projects"] objectAtIndex:row]];
+        [self beginFloatInput:[data objectForKey:@"count"] placeholder:@"请输入数量" result:^(NSString *text) {
+            [data setValue:[NSString stringWithFormat:@"%@", text] forKey:@"count"];
+            [[_cardInfoDic objectForKey:@"projects"] replaceObjectAtIndex:row withObject:data];
+            [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        }];
+    }
+    else if (flag == 2) {
+        //员工
+        [self performSegueWithIdentifier:@"chooseEmp" sender:nil];
+    }
+}
+
+#pragma BGoodsCellDelegate
+- (void)goodsCell:(NSInteger)row flag:(NSInteger)flag {
+    if (flag == -1) {
+        //取消
+        _commodity_index = -1;
+        [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    else if (flag == -2) {
+        //确定
+    }
+    else if (flag == 0) {
+        //数量
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_projInfoList objectAtIndex:row]];
+            [self beginFloatInput:[data objectForKey:@"count"] placeholder:@"请输入数量" result:^(NSString *text) {
+                [data setValue:[NSString stringWithFormat:@"%@", text] forKey:@"count"];
+                [_projInfoList replaceObjectAtIndex:row withObject:data];
+                [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }];
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_prodInfoList objectAtIndex:row]];
+            [self beginFloatInput:[data objectForKey:@"count"] placeholder:@"请输入数量" result:^(NSString *text) {
+                [data setValue:[NSString stringWithFormat:@"%@", text] forKey:@"count"];
+                [_prodInfoList replaceObjectAtIndex:row withObject:data];
+                [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }];
+        }
+    }
+    else if (flag == 1) {
+        //金额
+        if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+            NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_projInfoList objectAtIndex:row]];
+            [self beginFloatInput:[data objectForKey:@"price_s"] placeholder:@"请输入金额" result:^(NSString *text) {
+                [data setValue:[NSString stringWithFormat:@"%@", text] forKey:@"price_s"];
+                [_projInfoList replaceObjectAtIndex:row withObject:data];
+                [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }];
+        }
+        else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+            NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_prodInfoList objectAtIndex:row]];
+            [self beginFloatInput:[data objectForKey:@"price_s"] placeholder:@"请输入金额" result:^(NSString *text) {
+                [data setValue:[NSString stringWithFormat:@"%@", text] forKey:@"price_s"];
+                [_prodInfoList replaceObjectAtIndex:row withObject:data];
+                [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            }];
+        }
+    }
+    else if (flag == 2) {
+        //员工
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation

@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _typeList = @[@"未知", @"存入", @"取现", @"消费抵扣", @"充值抵扣"];
     // Initialization code
 }
 

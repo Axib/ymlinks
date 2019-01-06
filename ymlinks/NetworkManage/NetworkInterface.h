@@ -40,19 +40,25 @@ typedef enum : NSUInteger {//网络接口
     /** 获取价目列表 */
     NetworkTag_GetPriceList,
     
+    /**************************************** 开单 ****************************************/
+    /** 获取预约人数 */
+    NetworkTag_GetServiceCount,
+    /** 修改疗程备注 /wallet/card/course/remark/change?courseId=&newRemark= */
+    NetworkTag_UpdateCourseRemark,
+    
     /**************************************** 会员 ****************************************/
     /** 关键字 查询会员卡信息 */
     NetworkTag_SearchMemberCardByKeyword,
-    /** 会员卡Id 获取会员信息 */
-    NetworkTag_GetMemberInfoByCardId,
-    /** 会员卡Id 获取账户信息 */
-    NetworkTag_GetMemberAccountInfoByCardId,
-    /** 会员卡Id 获取疗程账户信息 */
-    NetworkTag_GetMemberCourseInfoByCardId,
-    /** 会员卡Id 获取交易历史信息 */
-    NetworkTag_GetMemberTransactionListByCardId,
-    /** 会员卡Id 获取沟通记录信息 */
-    NetworkTag_GetMemberReturnVistListByCardId,
+    /** 会员Id 获取会员信息 */
+    NetworkTag_GetMemberInfoByUserId,
+    /** 会员卡Id 获取会员卡信息 */
+    NetworkTag_GetCardInfoById,
+    /** 会员Id 获取会员帐户信息 */
+    NetworkTag_GetAccountByUserId,
+    /** 会员Id 页码 查询会员帐户历史 */
+    NetworkTag_GetTradeHistory,
+    /** 会员Id 页码 获取会员保证金账户历史 */
+    NetworkTag_GetMemberAdvance,
     
     /**************************************** 预约 ****************************************/
     /** 根据日期查询预约 */
@@ -79,7 +85,26 @@ typedef enum : NSUInteger {//网络接口
     
     
     /** 获取门店员工list */
-    NetworkTag_GetShopEmpList
+    NetworkTag_GetShopEmpList,
+    
+    /**************************************** PUB ****************************************/
+    /** 获取系统参数 */
+    NetworkTag_GetSystemSetting,
+    /** 获取支付方式 */
+    NetworkTag_GetPayType,
+    /** 获取服务员工 */
+    NetworkTag_GetServiceEmp,
+    /** 获取项目／产品大类 系统级别的 */
+    NetworkTag_GetProjType,
+    NetworkTag_GetProdType,
+    /** 获取统计分类 连锁自定义的 */
+    NetworkTag_GetProjStatisticsType,
+    NetworkTag_GetProdStatisticsType,
+    /** 获取项目资料 */
+    NetworkTag_GetProjectList,
+    /** 获取项目资料 */
+    NetworkTag_GetProductList
+    
     
 } NetworkInterfaceTag;
 @interface NetworkInterface : NSObject

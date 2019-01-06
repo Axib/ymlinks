@@ -43,24 +43,35 @@
             return [NSString stringWithFormat:@"%@/wallet/card/chain",
                     CurrentURL];
             
-        case NetworkTag_GetMemberInfoByCardId://根据卡Id获取会员详情 拼接接口 {会员卡id}/getCustomerInfo
-            return [NSString stringWithFormat:@"%@/s3connect/card/chain/%@/card/",
-                    CurrentURL, m_currentShopInfo.m_custId];
-            
-        case NetworkTag_GetMemberAccountInfoByCardId://根据卡Id获取会员账户信息 拼接接口 {会员卡id}/list/getAccountLsByCardNo
-            return [NSString stringWithFormat:@"%@/s3connect/card/chain/%@/card/",
-                    CurrentURL, m_currentShopInfo.m_custId];
-            
-        case NetworkTag_GetMemberCourseInfoByCardId://根据卡Id获取会员疗程账户信息 拼接接口 {会员卡id}/account/treatment/list/ge
-            return [NSString stringWithFormat:@"%@/s3connect/card/",
+        case NetworkTag_GetTradeHistory://查询会员帐户历史/api/user/card/-/trade/history?page=
+            return [NSString stringWithFormat:@"%@/wallet/trans",
                     CurrentURL];
             
-        case NetworkTag_GetMemberTransactionListByCardId://根据卡Id获取会员交易历史 @{会员卡id}/chain/@{连锁Id}/queryTreatInfoList
-            return [NSString stringWithFormat:@"%@/s3connect/card/", CurrentURL];
-            
-        case NetworkTag_GetMemberReturnVistListByCardId://根据卡Id获取会员沟通历史 @{会员卡id}
-            return [NSString stringWithFormat:@"%@/reserve/consume/session/card/",
+        case NetworkTag_GetMemberAdvance://获取会员保证金账户历史/api/user/-/advance?page=
+            return [NSString stringWithFormat:@"%@/wallet/advance",
                     CurrentURL];
+            
+        case NetworkTag_GetServiceCount://获取预约人数
+            return [NSString stringWithFormat:@"%@/shop/setting",
+                    CurrentURL];
+            
+        case NetworkTag_GetMemberInfoByUserId://根据卡Id获取会员资料 拼接接口 /user/admin/" + userId + "/get
+            return [NSString stringWithFormat:@"%@/user/admin/",
+                    CurrentURL];
+            
+        case NetworkTag_GetCardInfoById://根据卡Id获取会员卡信息 拼接接口 /wallet/card/"+cardId+"/get
+            return [NSString stringWithFormat:@"%@/wallet/card/",
+                    CurrentURL];
+            
+        case NetworkTag_GetAccountByUserId://获取会员帐户
+            return [NSString stringWithFormat:@"%@/wallet/my",
+                    CurrentURL];
+            
+        case NetworkTag_UpdateCourseRemark://修改疗程备注 /wallet/card/course/remark/change?courseId=&newRemark=
+            return [NSString stringWithFormat:@"%@/wallet/card/course/remark/change",
+                    CurrentURL];
+            
+            
             
             
         case NetworkTag_PostReservationListByDate://根据日期查询预约list
@@ -94,6 +105,35 @@
         case NetworkTag_GetCanReservationServiceList://获取门店可预约服务list
             return [NSString stringWithFormat:@"%@/shop/get/%@",
                     CurrentURL, m_currentShopInfo.m_shopId];
+            
+            
+            
+        case NetworkTag_GetPayType://支付方式
+            return [NSString stringWithFormat:@"%@/shop/pay/type",
+                    CurrentURL];
+            
+        case NetworkTag_GetSystemSetting://系统参数
+            return [NSString stringWithFormat:@"%@/shop/pay/setting",
+                    CurrentURL];
+            
+        case NetworkTag_GetServiceEmp://服务员工
+            return [NSString stringWithFormat:@"%@/user/emp/chain",
+                    CurrentURL];
+            
+        case NetworkTag_GetProjType://项目／产品大类 系统级别的
+        case NetworkTag_GetProdType:
+            return [NSString stringWithFormat:@"%@/shop/category/base",
+                    CurrentURL];
+            
+        case NetworkTag_GetProjStatisticsType://获取统计分类 连锁自定义的
+        case NetworkTag_GetProdStatisticsType:
+            return [NSString stringWithFormat:@"%@/shop/category/chain",
+                    CurrentURL];
+            
+        case NetworkTag_GetProjectList://获取项目／产品列表 /api/project/list?type=&page=
+        case NetworkTag_GetProductList:
+            return [NSString stringWithFormat:@"%@/shop/project/search",
+                    CurrentURL];
             
             
         default:

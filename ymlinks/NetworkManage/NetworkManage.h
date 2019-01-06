@@ -47,6 +47,8 @@
 /** 发送 PostJson请求 */
 - (void)postJsonRequest:(NSDictionary *)parameDic Tag:(NetworkInterfaceTag)tag Delegate:(id<NetworkManageDelegate>)delegate;
 
+- (void)postJsonRequest:(NSDictionary *)parameDic subParam:(NSDictionary *)subParam Tag:(NetworkInterfaceTag)tag Delegate:(id<NetworkManageDelegate>)delegate;
+
 /** 发送 带有二进制参数 请求 */
 - (void)postDataRequest:(NSDictionary *)parameDic UploadData:(NSData *)data UploadKey:(NSString *)key  Tag:(NetworkInterfaceTag)tag Delegate:(id)delegate;
 

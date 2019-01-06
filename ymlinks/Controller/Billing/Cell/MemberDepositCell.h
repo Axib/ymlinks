@@ -10,4 +10,10 @@
 
 @interface MemberDepositCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *pName_lab;
+@property (weak, nonatomic) IBOutlet UILabel *date_label;
+@property (weak, nonatomic) IBOutlet UILabel *sName_label;
+@property (weak, nonatomic) IBOutlet UILabel *dNumber_label;
+@property (weak, nonatomic) IBOutlet UILabel *uNumber_label;
+@property (weak, nonatomic) IBOutlet UILabel *lNumber_label;
 @end

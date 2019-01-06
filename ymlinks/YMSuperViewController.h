@@ -18,4 +18,6 @@
 
 - (void)showError:(NSString *)errorMsg;
 
+- (void)beginFloatInput:(NSString *) text placeholder:(NSString *) placeholder result:(void (^)(NSString * text)) inputBlock;
+
 @end

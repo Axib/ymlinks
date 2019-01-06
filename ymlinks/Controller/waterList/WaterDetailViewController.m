@@ -32,6 +32,7 @@
         self.date_label.text = [NSString stringWithFormat:@"%@", [self.infoDic objectForKey:@"createDate"]];
     }
 }
+
 - (IBAction)closeAction:(id)sender {
     [self dismissViewControllerAnimated:true completion:^{
         if (_delegate && !sender) {

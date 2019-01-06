@@ -77,6 +77,13 @@
 		01FD1B1A21DB6C8F0034D267 /* BillingCommodityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FD1B1921DB6C8F0034D267 /* BillingCommodityCell.m */; };
 		01FD1B1D21DBB8D20034D267 /* BillingGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FD1B1C21DBB8D20034D267 /* BillingGoodsCell.m */; };
 		01FD1B2021DBC2B70034D267 /* TransactionHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FD1B1F21DBC2B70034D267 /* TransactionHistoryCell.m */; };
+		01FFD05621E1FDE300220F0D /* icon_save_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 01FFD05521E1FDE300220F0D /* icon_save_03.png */; };
+		01FFD05921E235B400220F0D /* img_radio_0_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 01FFD05721E235B200220F0D /* img_radio_0_01.png */; };
+		01FFD05A21E235B400220F0D /* img_radio_1_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 01FFD05821E235B300220F0D /* img_radio_1_01.png */; };
+		01FFD05E21E2376A00220F0D /* EmployeesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FFD05D21E2376A00220F0D /* EmployeesViewController.m */; };
+		01FFD06221E237A500220F0D /* EmployeesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FFD06121E237A500220F0D /* EmployeesCell.m */; };
+		01FFD06A21E2519C00220F0D /* img_check_1_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01FFD06821E2519900220F0D /* img_check_1_02@2x.png */; };
+		01FFD06B21E2519C00220F0D /* img_check_0_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01FFD06921E2519A00220F0D /* img_check_0_02@2x.png */; };
 		05FF0B6016CF4317E6D3158B /* libPods-ymlinks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F8BFED87CA613038EFD602 /* libPods-ymlinks.a */; };
 /* End PBXBuildFile section */
 
@@ -222,6 +229,15 @@
 		01FD1B1C21DBB8D20034D267 /* BillingGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillingGoodsCell.m; sourceTree = "<group>"; };
 		01FD1B1E21DBC2B70034D267 /* TransactionHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionHistoryCell.h; sourceTree = "<group>"; };
 		01FD1B1F21DBC2B70034D267 /* TransactionHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionHistoryCell.m; sourceTree = "<group>"; };
+		01FFD05521E1FDE300220F0D /* icon_save_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_save_03.png; sourceTree = "<group>"; };
+		01FFD05721E235B200220F0D /* img_radio_0_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_radio_0_01.png; sourceTree = "<group>"; };
+		01FFD05821E235B300220F0D /* img_radio_1_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_radio_1_01.png; sourceTree = "<group>"; };
+		01FFD05C21E2376A00220F0D /* EmployeesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmployeesViewController.h; sourceTree = "<group>"; };
+		01FFD05D21E2376A00220F0D /* EmployeesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmployeesViewController.m; sourceTree = "<group>"; };
+		01FFD06021E237A500220F0D /* EmployeesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmployeesCell.h; sourceTree = "<group>"; };
+		01FFD06121E237A500220F0D /* EmployeesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmployeesCell.m; sourceTree = "<group>"; };
+		01FFD06821E2519900220F0D /* img_check_1_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_check_1_02@2x.png"; sourceTree = "<group>"; };
+		01FFD06921E2519A00220F0D /* img_check_0_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_check_0_02@2x.png"; sourceTree = "<group>"; };
 		A4F8BFED87CA613038EFD602 /* libPods-ymlinks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ymlinks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A834F11F154D8BC835355D68 /* Pods-ymlinks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ymlinks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ymlinks/Pods-ymlinks.debug.xcconfig"; sourceTree = "<group>"; };
 		AE0C5CF40097AB00BD445EE1 /* Pods-ymlinks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ymlinks.release.xcconfig"; path = "Pods/Target Support Files/Pods-ymlinks/Pods-ymlinks.release.xcconfig"; sourceTree = "<group>"; };
@@ -330,6 +346,9 @@
 		0138A52F21DA78BC0026CEEC /* billing */ = {
 			isa = PBXGroup;
 			children = (
+				01FFD05721E235B200220F0D /* img_radio_0_01.png */,
+				01FFD05821E235B300220F0D /* img_radio_1_01.png */,
+				01FFD05521E1FDE300220F0D /* icon_save_03.png */,
 				01FD1B1621DB548A0034D267 /* icon_history_2@2x.png */,
 				0138A53021DA78D00026CEEC /* img_fold_01.png */,
 				0138A53121DA78D00026CEEC /* img_unfold_01.png */,
@@ -440,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				01CE5D8621C6A50A00B2BC90 /* icon_return_back@3x.png */,
+				01FFD06721E250D500220F0D /* emp */,
 				0138A52F21DA78BC0026CEEC /* billing */,
 				01CE5D6E21C68BB300B2BC90 /* login */,
 				01CE5D6D21C68BA700B2BC90 /* home */,
@@ -451,6 +471,7 @@
 		01CE5D5D21C64F1B00B2BC90 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				01FFD05B21E2371700220F0D /* Public */,
 				01CE5D5E21C64F5200B2BC90 /* Login */,
 				01CE5D6221C651CC00B2BC90 /* Home */,
 				01F172EC21C93DCE0065C987 /* Billing */,
@@ -649,6 +670,34 @@
 			path = Libs;
 			sourceTree = "<group>";
 		};
+		01FFD05B21E2371700220F0D /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				01FFD05F21E2376F00220F0D /* Cell */,
+				01FFD05C21E2376A00220F0D /* EmployeesViewController.h */,
+				01FFD05D21E2376A00220F0D /* EmployeesViewController.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		01FFD05F21E2376F00220F0D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				01FFD06021E237A500220F0D /* EmployeesCell.h */,
+				01FFD06121E237A500220F0D /* EmployeesCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		01FFD06721E250D500220F0D /* emp */ = {
+			isa = PBXGroup;
+			children = (
+				01FFD06921E2519A00220F0D /* img_check_0_02@2x.png */,
+				01FFD06821E2519900220F0D /* img_check_1_02@2x.png */,
+			);
+			path = emp;
+			sourceTree = "<group>";
+		};
 		C53AFBD66F977E36DA1C511E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -776,8 +825,11 @@
 			files = (
 				01F67CEB21C2830C008255BE /* icon_password_01.png in Resources */,
 				0196E16B21C0107F004CB83C /* img_login_element.png in Resources */,
+				01FFD05A21E235B400220F0D /* img_radio_1_01.png in Resources */,
 				0196E13821C00ADB004CB83C /* LaunchScreen.storyboard in Resources */,
+				01FFD06B21E2519C00220F0D /* img_check_0_02@2x.png in Resources */,
 				01F67CFB21C2B858008255BE /* MJPhotoBrowser in Resources */,
+				01FFD05621E1FDE300220F0D /* icon_save_03.png in Resources */,
 				01CE5D7521C68BD300B2BC90 /* icon_water_list.png in Resources */,
 				0196E13521C00ADB004CB83C /* Assets.xcassets in Resources */,
 				013ADC2621CF685A00C21336 /* img_border_02.png in Resources */,
@@ -792,7 +844,9 @@
 				01CE5D7621C68BD300B2BC90 /* icon_archives_01.png in Resources */,
 				01CE5D7721C68BD300B2BC90 /* icon_reservation_01.png in Resources */,
 				0138A53221DA78D10026CEEC /* img_fold_01.png in Resources */,
+				01FFD05921E235B400220F0D /* img_radio_0_01.png in Resources */,
 				01CE5D8721C6A50A00B2BC90 /* icon_return_back@3x.png in Resources */,
+				01FFD06A21E2519C00220F0D /* img_check_1_02@2x.png in Resources */,
 				013ADC2821CF949500C21336 /* img_tagBg_01.png in Resources */,
 				01CE5D7421C68BD300B2BC90 /* icon_price_list.png in Resources */,
 				01FD1B1721DB548C0034D267 /* icon_history_2@2x.png in Resources */,
@@ -872,6 +926,7 @@
 				012750F821C6067C000FDFDB /* UITextField+Expand.m in Sources */,
 				012750E921C60555000FDFDB /* UIButton+Expand.m in Sources */,
 				011BE27521C4BC270044A70C /* NetworkManage.m in Sources */,
+				01FFD05E21E2376A00220F0D /* EmployeesViewController.m in Sources */,
 				013ADC2421CF671700C21336 /* WaterListViewCell.m in Sources */,
 				01F172E021C9281C0065C987 /* SearchMberViewController.m in Sources */,
 				01F172EB21C93AA10065C987 /* ReservationViewController.m in Sources */,
@@ -902,6 +957,7 @@
 				012750EC21C60592000FDFDB /* UIButton+VerificCode.m in Sources */,
 				01CE5D6121C64F7700B2BC90 /* LoginViewController.m in Sources */,
 				01FD1B1A21DB6C8F0034D267 /* BillingCommodityCell.m in Sources */,
+				01FFD06221E237A500220F0D /* EmployeesCell.m in Sources */,
 				0196E12D21C00ADB004CB83C /* AppDelegate.m in Sources */,
 				0138A52B21DA60000026CEEC /* BillingConsumeCell.m in Sources */,
 				012750FB21C606AF000FDFDB /* UIView+Expand.m in Sources */,
