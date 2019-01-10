@@ -1039,6 +1039,7 @@
     }
     else if (flag == 2) {
         //员工
+        [self performSegueWithIdentifier:@"chooseEmp" sender:nil];
     }
 }
 

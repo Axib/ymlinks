@@ -17,14 +17,10 @@
     // Initialization code
 }
 
-- (void)setInfo:(NSDictionary *) empInfo {
-    BOOL choice = false;
+- (void)setInfo:(NSDictionary *) empInfo ser:(int) ser type:(int) type {
     int index = 0;
     NSString *empName = @"未知";
     if (empInfo) {
-        if ([empInfo objectForKey:@"choice"]) {
-            choice = [[empInfo objectForKey:@"choice"] boolValue];
-        }
         if ([empInfo objectForKey:@"serviceLevel"]) {
             index = [[empInfo objectForKey:@"serviceLevel"] intValue];
         }
@@ -35,12 +31,32 @@
             empName = [NSString stringWithFormat:@"%@-%@", empName, [empInfo objectForKey:@"realname"]];
         }
     }
+    [_status_icon setImage:[UIImage imageNamed:(ser >= 0 ? @"img_radio_1_01" : @"img_radio_0_01")]];
     for (UIButton *btn in _btns) {
         [btn setImage:[UIImage imageNamed:@"img_check_0_02"] forState:UIControlStateNormal];
-        btn.hidden = choice;
+        btn.hidden = ser < 0;
+    }
+    if (ser < 0 || ser > 2) {
+        _serType_label.hidden = true;
+        _serType_label.text = @"";
+    }
+    else {
+        _serType_label.hidden = false;
+        _serType_label.text = @[@"美发师", @"技师", @"助理"][ser];
     }
     [[_btns objectAtIndex:index] setImage:[UIImage imageNamed:@"img_check_1_02"] forState:UIControlStateNormal];
     [_name_label setText:empName];
+    [_name_label ex_widthForText:5];
+    CGRect rect = _name_label.frame;
+    if (rect.size.width > _info_view.frame.size.width - 240) {
+        rect.size.width = _info_view.frame.size.width - 240;
+        [_name_label setFrame:rect];
+    }
+    CGRect rect2 = _serType_label.frame;
+    rect2.origin.x = rect.origin.x + rect.size.width + 5;
+    [_serType_label setFrame:rect2];
+    
+    [self chooseServiceLevel:[_btns objectAtIndex:type]];
 }
 
 - (IBAction)chooseServiceLevel:(id)sender {
@@ -51,6 +67,9 @@
         else {
             [btn setImage:[UIImage imageNamed:@"img_check_0_02"] forState:UIControlStateNormal];
         }
+    }
+    if (_delegate) {
+        [_delegate employeesCell:self.tag type:[sender tag]];
     }
 }
 

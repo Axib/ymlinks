@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol EmployeesCellDelegate <NSObject>
+- (void)employeesCell:(NSInteger) row type:(NSInteger) type;
+@end
+
 @interface EmployeesCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIView *content_view;
@@ -16,10 +20,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *name_label;
 @property (weak, nonatomic) IBOutlet UILabel *serType_label;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btns;
+@property (strong, nonatomic) id<EmployeesCellDelegate> delegate;
 
 
 @property (assign, nonatomic) BOOL choice;
 
-- (void)setInfo:(NSDictionary *) empInfo;
+- (void)setInfo:(NSDictionary *) empInfo ser:(int) ser type:(int) type;
 
 @end

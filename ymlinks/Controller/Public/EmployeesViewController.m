@@ -9,14 +9,15 @@
 #import "EmployeesViewController.h"
 #import "EmployeesCell.h"
 
-@interface EmployeesViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface EmployeesViewController ()<UITableViewDelegate, UITableViewDataSource, EmployeesCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *title_label;
 @property (weak, nonatomic) IBOutlet UITableView *main_table;
 @property (weak, nonatomic) IBOutlet UIButton *close_btn;
 @property (weak, nonatomic) IBOutlet UIButton *cancel_btn;
 
-@property (strong, nonatomic) NSArray *empList;
+@property (strong, nonatomic) NSMutableArray *empList;
+@property (strong, nonatomic) NSMutableArray *serList;
 
 @end
 
@@ -33,6 +34,8 @@
                   @"chainId": [m_loginInfo objectForKey:@"chainId"],
                   @"compId": [m_loginInfo objectForKey:@"compId"]};
     [[NetworkManage shareNetworkManage] getRequest:parameDic Tag:NetworkTag_GetServiceEmp Delegate:self];
+    
+    _serList = [[NSMutableArray alloc] init];
 }
 
 
@@ -40,7 +43,20 @@
 #pragma UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EmployeesCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EmployeesCell class]) forIndexPath:indexPath];
-    [cell setInfo:[_empList objectAtIndex:indexPath.row]];
+    cell.tag = indexPath.row;
+    cell.delegate = self;
+    NSDictionary *data = [_empList objectAtIndex:indexPath.row];
+    int ser = -1;
+    int type = 0;
+    for (int i = 0; i < [_serList count]; i++) {
+        NSDictionary *item = [_serList objectAtIndex:i];
+        if ([[item objectForKey:@"empNo"] isEqual:[data objectForKey:@"empNo"]]) {
+            ser = i;
+            type = [item objectForKey:@"type"] ? [[item objectForKey:@"type"] intValue] : 0;
+            break;
+        }
+    }
+    [cell setInfo:data ser:ser type:type];
     return cell;
 }
 
@@ -53,6 +69,27 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 5;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_empList objectAtIndex:indexPath.row]];
+    BOOL finding = NO;
+    for (NSDictionary *item in _serList) {
+        if ([[item objectForKey:@"empNo"] isEqual:[data objectForKey:@"empNo"]]) {
+            [_serList removeObject:item];
+            finding = YES;
+            break;
+        }
+    }
+    if (!finding) {
+        if ([_serList count] == 3) {
+            [self showError:@"服务人员不能超过3个！"];
+            return;
+        }
+        [_serList addObject:data];
+        [_empList replaceObjectAtIndex:indexPath.row withObject:data];
+    }
+    [tableView reloadData];
 }
 
 - (IBAction)closeAction:(id)sender {
@@ -73,7 +110,10 @@
     [super net_requestSuccess:result Tag:tag];
     if (tag == NetworkTag_GetServiceEmp) {
         //获取服务人数
-        _empList = result;
+        _empList = [[NSMutableArray alloc] init];
+        if (result) {
+            [_empList addObjectsFromArray:result];
+        }
         [_main_table reloadData];
     }
     NSLog(@"%@", result);
@@ -83,6 +123,18 @@
     [self showError:[NSString stringWithFormat:@"%@", result]];
 }
 
+#pragma EmployeesCellDelegate
+- (void)employeesCell:(NSInteger)row type:(NSInteger)type {
+    NSDictionary *data = [_empList objectAtIndex:row];
+    for (int i = 0; i < [_serList count]; i++) {
+        NSMutableDictionary *item = [_serList objectAtIndex:i];
+        if ([[item objectForKey:@"empNo"] isEqual:[data objectForKey:@"empNo"]]) {
+            [item setObject:[NSNumber numberWithInteger:type] forKey:@"type"];
+            [_serList replaceObjectAtIndex:i withObject:item];
+            break;
+        }
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
