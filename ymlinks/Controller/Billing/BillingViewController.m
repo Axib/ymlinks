@@ -15,8 +15,9 @@
 #import "MemberEarnestCell.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "EmployeesViewController.h"
 
-@interface BillingViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, BCommodityCellDelegate, BGoodsCellDelegate>
+@interface BillingViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, BCommodityCellDelegate, BGoodsCellDelegate, EmployeesDelegate>
 @property (weak, nonatomic) IBOutlet UIView *sex_view;
 @property (weak, nonatomic) IBOutlet UITableView *consume_table;
 @property (weak, nonatomic) IBOutlet UIView *btn_view;
@@ -63,6 +64,7 @@
 @property (strong, nonatomic) NSDictionary *accountInfoDic;
 @property (strong, nonatomic) NSMutableArray *tradeHistoryList;
 @property (strong, nonatomic) NSMutableArray *memberAdvanceList;
+@property (strong, nonatomic) NSMutableArray *consumeList;
 
 @property (assign, nonatomic) NSInteger projPage;
 @property (assign, nonatomic) NSInteger projTypeIndex;
@@ -70,6 +72,7 @@
 @property (assign, nonatomic) NSInteger prodTypeIndex;
 @property (assign, nonatomic) NSInteger tradeHisPage;
 @property (assign, nonatomic) NSInteger memberAdvPage;
+@property (assign, nonatomic) NSInteger chooseEmpIndex;
 
 @end
 
@@ -210,6 +213,8 @@
     }];
     
     [self loadRequest:0];
+    
+    _consumeList = [[NSMutableArray alloc] init];
 
     // Do any additional setup after loading the view.
 }
@@ -542,7 +547,7 @@
         }
     }
     else if (tableView == _consume_table) {
-        return 5;
+        return [_consumeList count];
     }
     return 0;
 }
@@ -606,6 +611,7 @@
             NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[[_cardInfoDic objectForKey:@"projects"] objectAtIndex:indexPath.row]];
             [data setValue:@"1" forKey:@"count"];
             [data setValue:@"" forKey:@"emps"];
+            [data setValue:@[] forKey:@"empList"];
             [[_cardInfoDic objectForKey:@"projects"] replaceObjectAtIndex:indexPath.row withObject:data];
         }
         else if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
@@ -613,6 +619,7 @@
             [data setValue:[data objectForKey:@"price"] forKey:@"price_s"];
             [data setValue:@"1" forKey:@"count"];
             [data setValue:@"" forKey:@"emps"];
+            [data setValue:@[] forKey:@"empList"];
             [_projInfoList replaceObjectAtIndex:indexPath.row withObject:data];
             
         }
@@ -621,6 +628,7 @@
             [data setValue:[data objectForKey:@"price"] forKey:@"price_s"];
             [data setValue:@"1" forKey:@"count"];
             [data setValue:@"" forKey:@"emps"];
+            [data setValue:@[] forKey:@"empList"];
             [_prodInfoList replaceObjectAtIndex:indexPath.row withObject:data];
         }
         else if ([[_functionDic objectForKey:@"flag"] isEqual:@3]) {
@@ -946,13 +954,16 @@
 
 #pragma BCommodityCellDelegate
 - (void)commodityCell:(NSInteger)row flag:(NSInteger)flag {
-    if (flag == -1) {
-        //取消
+    if (flag == -1 || flag == -2) {
+        //取消、确定
+        if (flag == -2) {
+            //确定
+            NSDictionary *data = [[_cardInfoDic objectForKey:@"projects"] objectAtIndex:row];
+            [_consumeList addObject:data];
+            [_consume_table reloadData];
+        }
         _commodity_index = -1;
         [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    }
-    else if (flag == -2) {
-        //确定
     }
     else if (flag == -3) {
         NSDictionary *data = [[_cardInfoDic objectForKey:@"projects"] objectAtIndex:row];
@@ -986,18 +997,28 @@
     else if (flag == 2) {
         //员工
         [self performSegueWithIdentifier:@"chooseEmp" sender:nil];
+        _chooseEmpIndex = row;
     }
 }
 
 #pragma BGoodsCellDelegate
 - (void)goodsCell:(NSInteger)row flag:(NSInteger)flag {
-    if (flag == -1) {
-        //取消
+    if (flag == -1 || flag == -2) {
+        //取消、确定
+        if (flag == -2) {
+            //确定
+            if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+                NSDictionary *data = [_projInfoList objectAtIndex:row];
+                [_consumeList addObject:data];
+            }
+            else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+                NSDictionary *data = [_prodInfoList objectAtIndex:row];
+                [_consumeList addObject:data];
+            }
+            [_consume_table reloadData];
+        }
         _commodity_index = -1;
         [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    }
-    else if (flag == -2) {
-        //确定
     }
     else if (flag == 0) {
         //数量
@@ -1040,7 +1061,50 @@
     else if (flag == 2) {
         //员工
         [self performSegueWithIdentifier:@"chooseEmp" sender:nil];
+        _chooseEmpIndex = row;
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    //这里toVc是拉的那条线的标识符
+    if ([segue.identifier isEqualToString:@"chooseEmp"]) {
+        EmployeesViewController *theVc = segue.destinationViewController;
+        theVc.delegate = self;
+    }
+}
+
+- (void)chooseEmployees:(NSArray *)emps {
+    NSString *empStr = @"";
+    if (emps) {
+        for (NSDictionary *emp in emps) {
+            if ([emp objectForKey:@"realname"]) {
+                empStr =[NSString stringWithFormat:@"%@ %@", empStr, [emp objectForKey:@"realname"]];
+            }
+            else if ([emp objectForKey:@"empNo"]) {
+                empStr =[NSString stringWithFormat:@"%@ %@", empStr, [emp objectForKey:@"empNo"]];
+            }
+        }
+    }
+    if ([[_functionDic objectForKey:@"flag"] isEqual:@0]) {
+        NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[[_cardInfoDic objectForKey:@"projects"] objectAtIndex:_chooseEmpIndex]];
+        [data setValue:emps forKey:@"empList"];
+        [data setValue:empStr forKey:@"emps"];
+        [[_cardInfoDic objectForKey:@"projects"] replaceObjectAtIndex:_chooseEmpIndex withObject:data];
+    }
+    else if ([[_functionDic objectForKey:@"flag"] isEqual:@1]) {
+        NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_projInfoList objectAtIndex:_chooseEmpIndex]];
+        [data setValue:emps forKey:@"empList"];
+        [data setValue:empStr forKey:@"emps"];
+        [_projInfoList replaceObjectAtIndex:_chooseEmpIndex withObject:data];
+        
+    }
+    else if ([[_functionDic objectForKey:@"flag"] isEqual:@2]) {
+        NSMutableDictionary *data = [NSMutableDictionary dictionaryWithDictionary:[_prodInfoList objectAtIndex:_chooseEmpIndex]];
+        [data setValue:emps forKey:@"empList"];
+        [data setValue:empStr forKey:@"emps"];
+        [_prodInfoList replaceObjectAtIndex:_chooseEmpIndex withObject:data];
+    }
+    [_commodity_table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_chooseEmpIndex inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)didReceiveMemoryWarning {

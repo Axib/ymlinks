@@ -8,6 +8,12 @@
 
 #import "YMSuperViewController.h"
 
+@protocol EmployeesDelegate <NSObject>
+- (void)chooseEmployees:(NSArray *) emps;
+@end
+
 @interface EmployeesViewController : YMSuperViewController
+
+@property (nonatomic, strong) id<EmployeesDelegate> delegate;
 
 @end

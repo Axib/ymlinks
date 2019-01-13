@@ -94,9 +94,9 @@
 
 - (IBAction)closeAction:(id)sender {
     [self dismissViewControllerAnimated:true completion:^{
-//        if (_delegate && !sender) {
-//            [_delegate waterRefresh];
-//        }
+        if (_delegate) {
+            [_delegate chooseEmployees:_serList];
+        }
     }];
 }
 
